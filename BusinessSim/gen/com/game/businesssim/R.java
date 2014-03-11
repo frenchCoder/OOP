@@ -174,12 +174,13 @@ public final class R {
         public static final int stand=0x7f020003;
     }
     public static final class id {
-        public static final int action_exit=0x7f0a0006;
-        public static final int action_glossary=0x7f0a0007;
-        public static final int action_howto=0x7f0a0008;
-        public static final int action_save=0x7f0a0005;
+        public static final int action_exit=0x7f0a0007;
+        public static final int action_glossary=0x7f0a0008;
+        public static final int action_howto=0x7f0a0009;
+        public static final int action_save=0x7f0a0006;
+        public static final int button1=0x7f0a0004;
         public static final int pager=0x7f0a0003;
-        public static final int section_label=0x7f0a0004;
+        public static final int section_label=0x7f0a0005;
         public static final int status_money=0x7f0a0001;
         public static final int status_time=0x7f0a0002;
         public static final int status_view=0x7f0a0000;
@@ -194,7 +195,7 @@ public final class R {
         public static final int fragment_stand=0x7f030006;
     }
     public static final class menu {
-        public static final int main=0x7f090000;
+        public static final int game=0x7f090000;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
