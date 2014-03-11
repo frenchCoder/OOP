@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BusinessSim</string>
+    <string name="app_name">Make Lemonade!</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_stand">Stand</string>
+    <string name="title_market">Market</string>
+    <string name="title_bank">Bank</string>
+    
+    <string name="label_status_money">Money: </string>
+    <string name="status_money">   </string>
+    
+    <string name="label_status_time">Time: </string>
+    <string name="status_time">   </string>
+    
+    <string name="pause_save">Save</string>
+    <string name="pause_exit">Exit</string>
+    <string name="pause_glossary">Glossary</string>
+    <string name="pause_howto">How To</string>
+    
+    <!-- navigation drawer stuff -->
+    <string-array name="Pause_OptionList">
+        <item >Save</item>
+        <item >Exit</item>
+        <item >How To Play</item>
+        <item >Glossary</item>
+    </string-array>
+    <string name="drawer_open">Game Paused</string>
+    <string name="drawer_close">Game Unpaused</string>
+    
 
 </resources>
