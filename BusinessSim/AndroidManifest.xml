@@ -26,7 +26,7 @@
         </activity>
         
         <activity
-            anroid:name="com.game.businesssim.Glossary"
+            anroid:name="com.game.businesssim.GlossaryActivity"
             ></activity>
             
     </application>
