@@ -24,6 +24,11 @@
         </activity>
         <activity android:name="com.game.businesssim.GameControllerActivity">
         </activity>
+        
+        <activity
+            anroid:name="com.game.businesssim.Glossary"
+            ></activity>
+            
     </application>
 
 </manifest>
