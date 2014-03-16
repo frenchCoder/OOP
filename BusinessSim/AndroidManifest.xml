@@ -25,9 +25,11 @@
         <activity android:name="com.game.businesssim.GameControllerActivity">
         </activity>
         
-        <activity
-            anroid:name="com.game.businesssim.GlossaryActivity"
-            ></activity>
+        <activity android:name="com.game.businesssim.GlossaryActivity">
+        </activity>
+        
+        <activity android:name="com.game.businesssim.HighScoreActivity">
+        </activity>
             
     </application>
 
