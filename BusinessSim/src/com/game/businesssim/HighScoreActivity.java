@@ -26,7 +26,7 @@ public class HighScoreActivity {
     
     //Try to locate the file
     try{
-      fis = openFileInput("highscore.txt);
+      fis = openFileInput("highscore.txt");
     } catch(FileNotFoundException e1){
       //TODO Auto-generated catch block
       e1.printStackTrace();
