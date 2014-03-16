@@ -1,0 +1,26 @@
+1. APR(interest) - A rate that is charged on a loan
+                                based on the amount burrowed.
+
+2. Bankrupt - A business that is unable to pay their debt.
+
+3. Business - The practice engaging in commerce.
+
+4. Debt - Something that is owed or due.
+
+5. Demand - The quantity of a producted based on the 
+                       price the buyer is willing to pay.
+
+6. Loan - Borrowing money temporarily at the cost of 
+                 interest.
+
+7. Price - The value of a product.
+
+8. Profit - Money that is made in a business.
+
+9. Sales - An exchange of a product typically with 
+                  money.
+
+10. Supply - The quantity of a product that the seller is 
+                      willing to have based on the price they are 
+                      selling it for.
+
