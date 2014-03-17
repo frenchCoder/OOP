@@ -16,20 +16,50 @@ public class MainActivity extends Activity {
 //        getActionBar().hide();
         
         
-        final Button button1 = (Button)findViewById(R.id.button1);
+        final Button button_play = (Button)findViewById(R.id.chooseGameBtn);
+        final Button button_howto = (Button)findViewById(R.id.howtoBtn);
+        final Button button_glossary = (Button)findViewById(R.id.glossaryBtn);
+        final Button button_scores = (Button)findViewById(R.id.highscoreBtn);
         
         // Have all the buttons objects initialized
         
-        button1.setOnClickListener(new OnClickListener(){
+        button_play.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        			
+        	}
+        	
+        });
+        
+        button_howto.setOnClickListener(new OnClickListener(){
         	@Override
         	public void onClick(View v){
         		// create the intent and start the GameControllerActivity
-        		Intent intent = new Intent(MainActivity.this, GameControllerActivity.class);
+        		Intent intent = new Intent(MainActivity.this, HowToActivity.class);
         		startActivity(intent);	
         	}
         	
         });
         
+        button_glossary.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// create the intent and start the GameControllerActivity
+        		Intent intent = new Intent(MainActivity.this, GlossaryActivity.class);
+        		startActivity(intent);	
+        	}
+        	
+        });
+        
+        button_scores.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// create the intent and start the GameControllerActivity
+        		Intent intent = new Intent(MainActivity.this, HighScoreActivity.class);
+        		startActivity(intent);	
+        	}
+        	
+        });
         
     }
 
