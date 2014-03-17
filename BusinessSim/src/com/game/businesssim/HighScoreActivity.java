@@ -10,7 +10,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class HighScoreActivity {
+public class HighScoreActivity extends Activity{
   
   protected void onCreate(Bundle SavedInstance){
     super.onCreate(SavedInstance);
@@ -19,7 +19,7 @@ public class HighScoreActivity {
     
     //These are text views that correspond to the table layout.
     TextView name = (TextView) findViewById(R.id.name);
-    TextView score = (TextView) findViewById(R.Id.score);
+    TextView score = (TextView) findViewById(R.id.score);
     
     //This will handle on opening the file. (Assuming that the file has it in sorted order)
     FileInputStream fis = null;

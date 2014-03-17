@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 
-public class GlossaryActivity {
+public class GlossaryActivity extends Activity{
   
   @Override
   protected void onCreate(Bundle savedInstanceState){
@@ -38,7 +38,7 @@ public class GlossaryActivity {
     String line;
     
     try{
-      while((line = br.readline()) != null){
+      while((line = br.readLine()) != null){
         text.append(line);
         text.append('\n');
       }

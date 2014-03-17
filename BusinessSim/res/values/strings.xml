@@ -14,14 +14,19 @@
     <string name="status_time">   </string>
     
     <string name="pause_save">Save</string>
-    <string name="pause_exit">Exit</string>
     <string name="pause_glossary">Glossary</string>
     <string name="pause_howto">How To</string>
+    
+    <!-- stand fragment strings -->
+	<string name="lemons">L: </string>
+	<string name="sugar">S: </string>
+	<string name="cups">C: </string>
+	<string name="ice">I: </string>
+
     
     <!-- navigation drawer stuff -->
     <string-array name="Pause_OptionList">
         <item >Save</item>
-        <item >Exit</item>
         <item >How To Play</item>
         <item >Glossary</item>
     </string-array>
@@ -30,3 +35,4 @@
     
 
 </resources>
+

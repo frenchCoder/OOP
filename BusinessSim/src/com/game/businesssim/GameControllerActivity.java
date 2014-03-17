@@ -122,10 +122,10 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 		            return new StandFragment();
 		        case 1:
 		            // Games fragment activity
-		            return new BankFragment();
+		            return new MarketFragment();
 		        case 2:
 		            // Movies fragment activity
-		            return new MarketFragment();
+		            return new BankFragment();
 	        }
 	 
 	        return null;

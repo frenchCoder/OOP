@@ -17,6 +17,7 @@ public class MainActivity extends Activity {
         
         
         final Button button1 = (Button)findViewById(R.id.button1);
+        
         // Have all the buttons objects initialized
         
         button1.setOnClickListener(new OnClickListener(){
