@@ -2,13 +2,16 @@ package com.game.businesssim;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class MainActivity extends Activity implements PlayOptionFragment.PlayOptionListener{
+public class MainActivity extends Activity implements PlayDialogFragment.PlayOptionListener{
 
+	public final static String EXTRA_MESSAGE = "com.game.businesssim.MESSAGE";
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +29,7 @@ public class MainActivity extends Activity implements PlayOptionFragment.PlayOpt
         button_play.setOnClickListener(new OnClickListener(){
         	@Override
         	public void onClick(View v){
-        			
+        		showPlayDialog();
         	}
         	
         });
@@ -63,8 +66,20 @@ public class MainActivity extends Activity implements PlayOptionFragment.PlayOpt
         
     }
     
+    public void showPlayDialog(){
+    	DialogFragment dialog = new PlayDialogFragment();
+    	dialog.show(this.getFragmentManager(), "PlayOptionFragment");
+    }
+    
+
+	// this implements the PlayOptionListener interface
     public void onOptionClick(int which){
+    	// Start the GameController Activity and pass in the option from the user
+    	Intent intent = new Intent(MainActivity.this, GameControllerActivity.class);
+    	String value = Integer.toString(which);
+    	intent.putExtra(EXTRA_MESSAGE, value);
     	
+    	startActivity(intent);
     }
 
 // This is not needed. The action bar is displayed but not the action overflow icon

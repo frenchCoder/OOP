@@ -4,11 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
-public class PlayOptionFragment extends DialogFragment{
+public class PlayDialogFragment extends DialogFragment{
 	
 	PlayOptionListener dListener;
 
@@ -22,6 +21,7 @@ public class PlayOptionFragment extends DialogFragment{
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// pass the users option back to the activity
+						dListener.onOptionClick(which);
 						
 					}
 				});
