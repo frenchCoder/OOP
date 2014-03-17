@@ -11,7 +11,8 @@ public final class R {
     public static final class array {
         /**  navigation drawer stuff 
          */
-        public static final int Pause_OptionList=0x7f080000;
+        public static final int Pause_OptionList=0x7f080001;
+        public static final int dialog_options=0x7f080000;
     }
     public static final class attr {
     }
@@ -227,21 +228,24 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
-        public static final int cups=0x7f07000e;
-        public static final int drawer_close=0x7f070011;
-        public static final int drawer_open=0x7f070010;
-        public static final int ice=0x7f07000f;
+        public static final int cups=0x7f07000f;
+        /**   MainMenu strings 
+         */
+        public static final int dialog_title=0x7f07000c;
+        public static final int drawer_close=0x7f070012;
+        public static final int drawer_open=0x7f070011;
+        public static final int ice=0x7f070010;
         public static final int label_status_money=0x7f070005;
         public static final int label_status_time=0x7f070007;
         /**  stand fragment strings 
          */
-        public static final int lemons=0x7f07000c;
+        public static final int lemons=0x7f07000d;
         public static final int pause_glossary=0x7f07000a;
         public static final int pause_howto=0x7f07000b;
         public static final int pause_save=0x7f070009;
         public static final int status_money=0x7f070006;
         public static final int status_time=0x7f070008;
-        public static final int sugar=0x7f07000d;
+        public static final int sugar=0x7f07000e;
         public static final int title_bank=0x7f070004;
         public static final int title_market=0x7f070003;
         public static final int title_stand=0x7f070002;

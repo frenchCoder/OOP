@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements PlayOptionFragment.PlayOptionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +61,10 @@ public class MainActivity extends Activity {
         	
         });
         
+    }
+    
+    public void onOptionClick(int which){
+    	
     }
 
 // This is not needed. The action bar is displayed but not the action overflow icon
