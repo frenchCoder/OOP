@@ -1,15 +1,27 @@
 package com.game.businesssim;
 
+import java.io.ObjectInputStream;
 import java.util.Locale;
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import android.content.Context;
+
 
 public class GameControllerActivity extends FragmentActivity implements ActionBar.TabListener {
 	
@@ -26,17 +38,31 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 	/**
 	 * The {@link ViewPager} that will host the section contents.
 	 */
-	ViewPager mViewPager;
+	protected ViewPager mViewPager;
+    protected Timer mTimer;
+    protected StandFragment mStandFragment;
+    protected TextView timerText ;
+    protected TextView moneyText;
+
+    public static int MAX_TIME = 60000;  // 1 minute
+    public static int INTERVAL = 1000;
+    public int MAX_DAYS = 30; // TODO: show final dialog box and start new activity?
+
+    private String FILENAME = "businessInfo.dat";
+
+    protected long timeResumed;
+    protected boolean mInitialPanelOpen = true; // this variable keeps track of first panel opening
+    protected boolean menuOpened = false;
+    protected int mDay = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
-		// Set up the action bar.
+        // Set up the action bar.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
@@ -68,7 +94,39 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 					.setText(mSectionsPagerAdapter.getPageTitle(i))
 					.setTabListener(this));
 		}
+
+        // create business
+        mStandFragment = (StandFragment)mSectionsPagerAdapter.getItem(0);
+
+        // get intent that created this activity
+        Intent intent = getIntent();
+        Bundle extra = intent.getExtras();
+
+        // retrieve boolean value as to whether or not the user wants to load a new or
+        // old game
+        try {
+           if (extra != null){
+               loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
+           }
+           else{  // something went wrong (loadGame variable not passed, create a new game by default
+               loadGame(false);
+           }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mDay = mStandFragment.getBusinessInfo().getDay();
+
+        // retrieve and set money amount
+        moneyText = (TextView) findViewById(R.id.status_money);
+        moneyText.setText(String.format("$%.2f",mStandFragment.getBusinessInfo().getProfit()));
+        // Create timer and start countdown
+        timerText = (TextView) findViewById(R.id.status_time);
+        mTimer = new Timer(MAX_TIME,INTERVAL);
+        mTimer.start();
+        savedInstanceState.putSerializable("business", mStandFragment.getBusinessInfo());
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,6 +134,66 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 		getMenuInflater().inflate(R.menu.game, menu);
 		return true;
 	}
+
+    public boolean onPrepareOptionsMenu (Menu menu){
+       if (!mInitialPanelOpen) {
+           timerText.setText(R.string.drawer_open);
+           mTimer.cancel();
+           menuOpened = true;
+       }
+       else {
+           mInitialPanelOpen = false;
+       }
+
+       return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        mTimer.cancel();
+    }
+
+    /**
+     * Called when a panel's menu item has been selected by the user.
+     * @param featureId The panel that the menu is in.
+     * @param item The menu item that was selected.
+     * @return boolean You must return true for the panel to be displayed; if you return false it will not be shown.
+     */
+    public boolean onMenuItemSelected (int featureId, MenuItem item){
+
+        switch (item.getItemId()){
+            case R.id.action_exit:
+                onBackPressed();
+                break;
+            case R.id.action_save:
+                try {
+                    saveGame();
+                    Context context = getApplicationContext();
+
+                    if (context != null){
+                        Toast.makeText(getApplicationContext(), R.string.game_saved, Toast.LENGTH_LONG).show();
+                    }
+
+                    finish();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case R.id.action_howto:
+                // TODO : fill in
+                startTimer(timeResumed,INTERVAL);  // TODO: remove when case is filled in
+                return super.onMenuItemSelected(featureId,item);
+            case R.id.action_glossary:
+                // TODO : fill in
+                  startTimer(timeResumed,INTERVAL); // TODO: remove when case is filled in
+                return super.onMenuItemSelected(featureId,item);
+            default:
+                startTimer(timeResumed,INTERVAL);
+                return super.onMenuItemSelected(featureId,item);
+        }
+        return true;
+    }
 
 	@Override
 	public void onTabSelected(ActionBar.Tab tab,
@@ -107,14 +225,6 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.
-			/*Fragment fragment = new DummySectionFragment();
-			Bundle args = new Bundle();
-			args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-			fragment.setArguments(args);
-			return fragment;*/
 			
 			switch (position) {
 		        case 0:
@@ -151,34 +261,175 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 			return null;
 		}
 	}
-	    
 
-	/**
-	 * A dummy fragment representing a section of the app, but that simply
-	 * displays dummy text.
-	 */
-	/*
-	public static class DummySectionFragment extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		  fragment.
-		 
-		public static final String ARG_SECTION_NUMBER = "section_number";
+    /**
+     * Saves the current instance of the business object
+     */
+    public void saveGame()throws IOException{
+       try{
 
-		public DummySectionFragment() {
-		}
+           ObjectOutputStream objectOutputStream = new ObjectOutputStream(openFileOutput(FILENAME,Context.MODE_PRIVATE));
+           objectOutputStream.writeObject(mStandFragment.getBusinessInfo());
+           objectOutputStream.close();
 
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main_dummy,
-					container, false);
-			TextView dummyTextView = (TextView) rootView
-					.findViewById(R.id.section_label);
-			dummyTextView.setText(Integer.toString(getArguments().getInt(
-					ARG_SECTION_NUMBER)));
-			return rootView;
-		}
-	}*/
+       }catch (IOException e){
+           e.printStackTrace();
+       }
+    }
+
+    /**
+     * Load a game based on whether or not loadFile is true, otherwise create new business object
+     * @param loadFile  determines whether or not to load a file from memory
+     */
+    public void loadGame(boolean loadFile) throws IOException{
+
+        if (loadFile){
+            try{
+                // try to create input stream
+                ObjectInputStream objectInputStream = new ObjectInputStream(openFileInput(FILENAME));
+
+                try {
+
+                    // get business object
+                    Business obj = (Business)objectInputStream.readObject();
+                    objectInputStream.close();
+                    mStandFragment.recreateBusiness(obj);
+
+                    // let user now that game was successfully loaded
+                    Context context = getApplicationContext();
+
+                    if (context != null){
+                        Toast.makeText(getApplicationContext(),R.string.game_loaded, Toast.LENGTH_LONG).show();
+                    }
+
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+
+        }
+        else {
+            mStandFragment.createNewBusiness();
+        }
+    }
+
+    /**
+     * Show confirmation of leaving game without saving
+     */
+    public void onBackPressed(){
+        timerText.setText(R.string.drawer_open);
+        mTimer.cancel();
+        confirmExit();
+    }
+
+    /**
+     * Create and dialog box to confirm that the user will be exiting the game
+     */
+    public void confirmExit(){
+        AlertDialog.Builder confirmationDialog = new AlertDialog.Builder(GameControllerActivity.this);
+        confirmationDialog.setMessage(R.string.ok_to_exit);
+        confirmationDialog.setTitle(R.string.game_not_saved);
+
+        // user close activity if user presses 'yes'
+        confirmationDialog.setNegativeButton(R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finish();
+            }
+        });
+
+        // continue game if user presses 'cancel'
+        confirmationDialog.setPositiveButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                startTimer(timeResumed, INTERVAL);
+            }
+        });
+
+        confirmationDialog.create();
+        confirmationDialog.show();
+    }
+
+    /**
+     * Create and show dialog box with the day's summary
+     */
+    public void showSummary(){
+
+        AlertDialog.Builder summaryDialog = new AlertDialog.Builder(GameControllerActivity.this);
+        summaryDialog.setMessage(mStandFragment.getBusinessInfo().getDailySummary());
+        summaryDialog.setTitle(R.string.summary_title);
+
+        summaryDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                mStandFragment.getBusinessInfo().nextDay();
+                mDay = mStandFragment.getBusinessInfo().getDay();
+                startTimer(MAX_TIME, INTERVAL);
+            }
+        });
+
+        summaryDialog.create();
+        summaryDialog.show();
+    }
+
+    /**
+     * Create and show dialog box when the game is over
+     */
+    public void showGameOverDialog(){
+
+        AlertDialog.Builder gameOverDialog = new AlertDialog.Builder(GameControllerActivity.this);
+        gameOverDialog.setMessage(mStandFragment.getBusinessInfo().getDailySummary());
+        gameOverDialog.setTitle(R.string.game_over);
+
+        gameOverDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                finish();
+            }
+        });
+
+        gameOverDialog.create();
+        gameOverDialog.show();
+    }
+
+
+    /**
+     * Start a new instance of the countdown timer
+     * @param millisInFuture
+     * @param countDownInterval
+     */
+    public void startTimer(long millisInFuture, long countDownInterval){
+        mTimer = new Timer(millisInFuture,countDownInterval);
+        mTimer.start();
+    }
+
+    /**
+     * Countdown timer
+     */
+    class Timer extends CountDownTimer{
+
+        Timer(long millisInFuture, long countDownInterval){
+            super(millisInFuture,countDownInterval);
+        }
+
+        // TODO: add customer array updates here
+        public void onTick(long millisUntilFinished) {
+            timeResumed = millisUntilFinished;
+            timerText.setText("" + millisUntilFinished / INTERVAL);
+        }
+
+        /**
+         * When countdown timer finishes, show the business's summary of the day
+         */
+        public void onFinish() {
+            timerText.setText(R.string.closed);
+
+            if (mDay == MAX_DAYS){
+                showGameOverDialog();
+            }
+            else{
+                showSummary();
+            }
+        }
+
+    }
 
 }
