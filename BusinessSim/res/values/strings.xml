@@ -18,7 +18,6 @@
     <string name="game_loaded">Game Loaded</string>
     
     <string name="pause_save">Save</string>
-    <string name="pause_exit">Exit</string>
     <string name="pause_glossary">Glossary</string>
     <string name="pause_howto">How To</string>
 
@@ -31,10 +30,25 @@
     <string name="closed">Closed</string>
     <string name="game_over">Game Over</string>
     
+    <!--  MainMenu strings -->
+    <string name="dialog_title">Select Game</string>
+    <string-array name="dialog_options">
+        <item >Level 1: new game</item>
+        <item >Level 1: saved game</item>
+        <item >Level 2: new game</item>
+        <item >Level 2: saved game</item>
+    </string-array>
+    
+    <!-- stand fragment strings -->
+	<string name="lemons">L: </string>
+	<string name="sugar">S: </string>
+	<string name="cups">C: </string>
+	<string name="ice">I: </string>
+
+    
     <!-- navigation drawer stuff -->
     <string-array name="Pause_OptionList">
         <item >Save</item>
-        <item >Exit</item>
         <item >How To Play</item>
         <item >Glossary</item>
     </string-array>
@@ -43,3 +57,4 @@
     
 
 </resources>
+

@@ -3,7 +3,210 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/stand"  >"
-    
+    android:background="@color/LightBlue"  >
 
+
+    <GridLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentTop="true"
+	    android:layout_alignParentLeft="true"
+	    android:layout_margin="5dp"
+	    android:columnCount="3"
+	    android:rowCount="2"
+		>	
+		<!-- lemon count text -->
+	    <LinearLayout
+	        android:layout_width="100dip"
+	        android:layout_height="wrap_content" 
+	        android:orientation="horizontal"
+	        android:layout_margin="5dp"
+	        android:layout_column="0"
+     		android:layout_row="0">
+			        
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/lemons" />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		        <TextView
+		            android:id="@+id/text_lemonCnt"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textSize="25sp"
+		             />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		    </LinearLayout>
+		    
+	    	<!-- cup count text -->
+	    	<LinearLayout
+		        android:layout_width="100dip"
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal"
+		        android:layout_margin="5dp"
+		        android:layout_column="1"
+	     		android:layout_row="0">
+			        
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/cups" />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		        <TextView
+		            android:id="@+id/text_cupCnt"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textSize="25sp"
+		             />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		    </LinearLayout>
+		
+		    <!-- ice count text -->
+	    	<LinearLayout
+		        android:layout_width="100dip"
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal"
+		        android:layout_margin="5dp"
+		        android:layout_column="0"
+     			android:layout_row="1">
+		        
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/ice" />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		        <TextView
+		            android:id="@+id/text_iceCnt"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textSize="25sp"
+		             />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		    </LinearLayout>
+		    
+	    	<!-- sugar count text -->
+		    	<LinearLayout
+		        android:layout_width="100dip"
+		        android:layout_height="wrap_content" 
+		        android:orientation="horizontal"
+		        android:layout_margin="5dp"
+		        android:layout_column="1"
+	     		android:layout_row="1">
+		        
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/sugar" />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		        <TextView
+		            android:id="@+id/text_sugarCnt"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textSize="25sp"
+		             />
+		        <Space
+		            android:layout_width="wrap_content"
+		            android:layout_height="match_parent"
+		            android:layout_weight="1" />
+		    </LinearLayout>
+		    
+		    <Button
+			     android:id="@+id/makeBtn"
+			     android:layout_width="wrap_content"
+		         android:layout_height="wrap_content"
+		         android:layout_centerHorizontal="true"
+		         android:layout_column="2"
+	     		 android:layout_row="0"
+	     		 android:layout_rowSpan="2"
+			     android:layout_margin="5dp"
+			     android:text="MAKE" />		
+		    
+	</GridLayout>
+		
+    <!-- stand with buttons and price -->
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="horizontal"  >
+		    
+	    <RelativeLayout
+		         android:layout_width="250dp"
+		         android:layout_height="300dp"
+		         android:layout_marginTop="10dp"
+		         android:background="@color/LightGreen"
+		         android:orientation="vertical" >
+				 
+				<Button android:id="@+id/plusBtn" 
+				     android:layout_width="wrap_content" 
+				     android:layout_height="wrap_content" 
+				     android:layout_centerVertical="true"
+				     android:layout_margin="10dp" 
+			         android:layout_alignParentRight="true"
+				     android:text="+"/>
+				<Button android:id="@+id/minusBtn" 
+				     android:layout_width="wrap_content" 
+				     android:layout_height="wrap_content"
+				     android:layout_margin="10dp" 
+			         android:layout_below="@id/plusBtn"
+			         android:layout_alignParentRight="true"
+				     android:text="-"/>
+
+				<TextView
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_above="@+id/minusBtn"
+				    android:layout_margin="5dp"
+				    android:layout_marginRight="50dp"
+				    android:layout_toLeftOf="@+id/plusBtn"
+				    android:text="$100.00" 
+				    android:textStyle="bold"
+				    android:textSize="25sp"
+				    android:background="@color/White"/>
+
+		</RelativeLayout>
+		
+		 <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="@string/lemons" 
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/text_lemonadeCnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+             />
+	    
+	</LinearLayout>
 </LinearLayout>
+

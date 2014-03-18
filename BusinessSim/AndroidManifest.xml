@@ -28,6 +28,13 @@
             android:parentActivityName="com.game.businesssim.MainActivity" >
 
         </activity>
+        
+        <activity android:name="com.game.businesssim.GlossaryActivity">
+        </activity>
+        
+        <activity android:name="com.game.businesssim.HighScoreActivity">
+        </activity>
+            
     </application>
 
 </manifest>
