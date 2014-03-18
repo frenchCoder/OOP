@@ -48,6 +48,7 @@
     
     <!-- navigation drawer stuff -->
     <string-array name="Pause_OptionList">
+        <item >Main Menu</item>
         <item >Save</item>
         <item >How To Play</item>
         <item >Glossary</item>

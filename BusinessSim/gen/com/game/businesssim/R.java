@@ -175,9 +175,10 @@ public final class R {
         public static final int stand=0x7f020003;
     }
     public static final class id {
-        public static final int action_glossary=0x7f0b001e;
-        public static final int action_howto=0x7f0b001f;
-        public static final int action_save=0x7f0b001d;
+        public static final int action_glossary=0x7f0b001f;
+        public static final int action_howto=0x7f0b0020;
+        public static final int action_mainmenu=0x7f0b001d;
+        public static final int action_save=0x7f0b001e;
         public static final int chooseGameBtn=0x7f0b0004;
         public static final int details=0x7f0b000c;
         public static final int getLoanBtn=0x7f0b000b;

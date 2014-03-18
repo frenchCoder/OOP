@@ -163,7 +163,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
     public boolean onMenuItemSelected (int featureId, MenuItem item){
 
         switch (item.getItemId()){
-            case R.id.action_exit:
+            case R.id.action_mainmenu:
                 onBackPressed();
                 break;
             case R.id.action_save:
