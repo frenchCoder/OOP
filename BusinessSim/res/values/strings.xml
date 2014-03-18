@@ -12,32 +12,15 @@
     
     <string name="label_status_time">Time: </string>
     <string name="status_time">   </string>
-
-    <string name="summary_title">Today\'s Summary</string>
-    <string name="game_saved">Game Saved</string>
-    <string name="game_loaded">Game Loaded</string>
     
     <string name="pause_save">Save</string>
+    <string name="pause_exit">Exit</string>
     <string name="pause_glossary">Glossary</string>
     <string name="pause_howto">How To</string>
-
-    <string name="day_summary">Summary</string>
-    <string name="yes">Yes</string>
-    <string name="ok_to_exit">Are you sure you want to exit?</string>
-    <string name="ok">Ok</string>
-    <string name="game_not_saved">Game is not saved</string>
-    <string name="cancel">Cancel</string>
-    <string name="closed">Closed</string>
-    <string name="game_over">Game Over</string>
     
-    <!--  MainMenu strings -->
-    <string name="dialog_title">Select Game</string>
-    <string-array name="dialog_options">
-        <item >Level 1: new game</item>
-        <item >Level 1: saved game</item>
-        <item >Level 2: new game</item>
-        <item >Level 2: saved game</item>
-    </string-array>
+    <!-- how to page strings -->
+    <string name="instructionsTitle">How To Play</string>
+    <string name="instructions">Put the instructions here!!!</string>
     
     <!-- stand fragment strings -->
 	<string name="lemons">L: </string>
@@ -49,6 +32,7 @@
     <!-- navigation drawer stuff -->
     <string-array name="Pause_OptionList">
         <item >Save</item>
+        <item >Exit</item>
         <item >How To Play</item>
         <item >Glossary</item>
     </string-array>
