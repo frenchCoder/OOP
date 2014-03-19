@@ -105,7 +105,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         // retrieve boolean value as to whether or not the user wants to load a new or
         // old game
         try {
-           if (extra != null){
+           if (extra != null && extra.containsKey("loadGame"){
                loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
            }
            else{  // something went wrong (loadGame variable not passed, create a new game by default
@@ -124,7 +124,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         timerText = (TextView) findViewById(R.id.status_time);
         mTimer = new Timer(MAX_TIME,INTERVAL);
         mTimer.start();
-        savedInstanceState.putSerializable("business", mStandFragment.getBusinessInfo());
+        
 	}
 
 
