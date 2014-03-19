@@ -12,26 +12,23 @@ public class RandomEvent {
 	private double profit;
 	private int numLoans;
 	private int numAds;
-	private int day;
 	private int cupSold;
 	private double pricePerCup;
 
 	public RandomEvent(String title, String description, int type,
 			int lemonCount, int iceCount, int cupCount, int lemonadeQty,
-			int sugarCount, double profit, int numLoans, int numAds, int day,
-			int cupSold, double pricePerCup) {
+			int sugarCount, double profit, int numLoans, int numAds, int cupSold, double pricePerCup) {
 		this.title=title;
 		this.description=description;
 		this.type=type;
-		this.profit = profit;
-		this.numAds = numAds;
-		this.numLoans = numLoans;
-		this.sugarCount = sugarCount;
-		this.iceCount = iceCount;
-		this.lemonadeQty = lemonadeQty;
-		this.cupCount = cupCount;
 		this.lemonCount = lemonCount;
-		this.day = day;
+		this.iceCount = iceCount;
+		this.cupCount = cupCount;
+		this.lemonadeQty = lemonadeQty;
+		this.sugarCount = sugarCount;
+		this.profit = profit;
+		this.numLoans = numLoans;
+		this.numAds = numAds;
 		this.cupSold = cupSold;
 		this.pricePerCup = pricePerCup;
 	}
@@ -78,10 +75,6 @@ public class RandomEvent {
 
 	public int getNumAds() {
 		return this.numAds;
-	}
-
-	public int getDay() {
-		return this.day;
 	}
 
 	public int getCupSold() {
@@ -134,10 +127,6 @@ public class RandomEvent {
 
 	public void setNumAds(int numAds) {
 		this.numAds = numAds;
-	}
-
-	public void setDay(int day) {
-		this.day = day;
 	}
 
 	public void setCupSold(int cupSold) {

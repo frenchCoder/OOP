@@ -2,17 +2,16 @@ package com.game.businesssim;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-
 public class RandomEventGenerator {
 	
 	private ArrayList<RandomEvent> events = new ArrayList<RandomEvent>();
 	
 	public RandomEventGenerator(){
-		events.add(new RandomEvent("One", "lemon", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-		events.add(new RandomEvent("Two", "ice", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+		RandomEvent event1 = new RandomEvent("One", "lemon", 0, 5, 0, 0, 0, 0, 0.0, 0, 0, 0, 0);
+		RandomEvent event2 = new RandomEvent("Two", "ice", 0, 0, 1, 0, 0, 0, 0.0, 0, 0, 0, 0);
 		
+		this.events.add(event1);
+		this.events.add(event2);		
 //		int size = 2;
 //		RandomEvent event;
 //		for(int i=0;i<size;i++){
@@ -21,14 +20,12 @@ public class RandomEventGenerator {
 	}	
 	
 	public RandomEvent chooseEvent(){
-		int rand = (int) Math.random()*events.size();
-		return (checkEvent(events.get(rand)))?events.get(rand):null;
+		int rand = (int) Math.random()*this.events.size();
+		return (checkEvent(this.events.get(rand)))?this.events.get(rand):null;
 	}
 	
 	private boolean checkEvent(RandomEvent event){
 		return true;
 	}
-	
-	
 
 }
