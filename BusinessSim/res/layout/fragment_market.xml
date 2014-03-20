@@ -1,9 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@color/LightSalmon">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" 
+        android:layout_height="match_parent"  >
+        
+	     <RelativeLayout 
+		   android:layout_width="match_parent"
+		   android:layout_height="match_parent"
+		   android:orientation="vertical" 
+		   android:background="@color/LightBlue">
+	
+	     <TextView
+	      android:id="@+id/marketTitle"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:layout_centerHorizontal="true"
+	      android:layout_alignParentTop="true"
+	      android:background="@color/LightGreen"
+	      android:text="MarketPlace"
+	      android:textStyle="bold"
+	      android:textSize="20sp" />
     
+	    <TableLayout
+	        android:id="@+id/supplyTable"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/marketTitle"
+	        android:background="@color/LightBlue" >
+	
+	        <!-- Lemon Row -->
+	        <TableRow
+	            android:id="@+id/tableRow1"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" 
+	            android:background="@drawable/textlines"
+	            android:gravity="center">
+	            
+	            <LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginRight="70dp"
+				    android:orientation="vertical"
+				    android:gravity="center_vertical" >
+		             <TextView
+				        android:id="@+id/lemontitle"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:text="Lemons"
+				        android:textStyle="bold"
+				        android:textSize="20sp" />
+		             <TextView
+				        android:id="@+id/secondLine"
+				        android:layout_width="fill_parent"
+				        android:layout_height="26dip"
+				        android:ellipsize="marquee"
+				        android:singleLine="true"
+				        android:text="$1.00"
+				        android:textSize="17sp" />
+				</LinearLayout>
+	            
+	             
+	            <!-- amount of items chooser -->
+		            <Button
+			            android:id="@+id/minusLemon"
+			            style="?android:attr/buttonStyleSmall"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="-" />
+		            
+		            <TextView
+		                android:id="@+id/lemonAmt"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginRight="5dp"
+			            android:layout_marginLeft="5dp"
+			            android:textSize="25sp"
+			            android:text="10" />
+		            
+		            <Button
+		                android:id="@+id/plusLemon"
+		                style="?android:attr/buttonStyleSmall"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="+" />
+	
+	        </TableRow>
+	
+	        <!-- Cup Row -->
+	        <TableRow
+	            android:id="@+id/tableRow2"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" 
+	            android:gravity="center"
+	            android:background="@drawable/textlines" >
+		            
+	             <LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginRight="70dp"
+				    android:orientation="vertical"
+				    android:gravity="center_vertical" >
+		             <TextView
+				        android:id="@+id/cuptitle"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:text="Cups"
+				        android:textStyle="bold"
+				        android:textSize="20sp"  />
+		             <TextView
+				        android:id="@+id/secondLine"
+				        android:layout_width="fill_parent"
+				        android:layout_height="26dip"
+				        android:ellipsize="marquee"
+				        android:singleLine="true"
+				        android:text="$1.00"
+				        android:textSize="17sp" />
+				</LinearLayout>
+	            
+	             
+	            <!-- amount of items chooser -->
+		            <Button
+			            android:id="@+id/minusLemon"
+			            style="?android:attr/buttonStyleSmall"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="-" />
+		            
+		            <TextView
+		                android:id="@+id/lemonAmt"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginRight="5dp"
+			            android:layout_marginLeft="5dp"
+			            android:textSize="25sp"
+			            android:text="10" />
+		            
+		            <Button
+		                android:id="@+id/plusLemon"
+		                style="?android:attr/buttonStyleSmall"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="+" />
+	            
+	        </TableRow>
+	
+	        
+	        <!-- Sugar Row -->
+	        <TableRow
+	            android:id="@+id/tableRow3"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" 
+	            android:background="@drawable/textlines"
+	            android:gravity="center" >
+		            
+	             <LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginRight="70dp"
+				    android:orientation="vertical"
+				    android:gravity="center_vertical" >
+		             <TextView
+				        android:id="@+id/lemontitle"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:text="Sugar"
+				        android:textStyle="bold"
+				        android:textSize="20sp"  />
+		             <TextView
+				        android:id="@+id/secondLine"
+				        android:layout_width="fill_parent"
+				        android:layout_height="26dip"
+				        android:ellipsize="marquee"
+				        android:singleLine="true"
+				        android:text="$1.00"
+				        android:textSize="17sp" />
+				</LinearLayout>
+	            
+	             
+	            <!-- amount of items chooser -->
+		            <Button
+			            android:id="@+id/minusLemon"
+			            style="?android:attr/buttonStyleSmall"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="-" />
+		            
+		            <TextView
+		                android:id="@+id/lemonAmt"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginRight="5dp"
+			            android:layout_marginLeft="5dp"
+			            android:textSize="25sp"
+			            android:text="10" />
+		            
+		            <Button
+		                android:id="@+id/plusLemon"
+		                style="?android:attr/buttonStyleSmall"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="+" />
+	        </TableRow>
+	
+	        <!-- Ice Row -->
+	        <TableRow
+	            android:id="@+id/tableRow4"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" 
+	            android:gravity="center"
+	            android:background="@drawable/textlines" >
+		            
+	             <LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginRight="70dp"
+				    android:orientation="vertical"
+				    android:gravity="center_vertical" >
+		             <TextView
+				        android:id="@+id/icetitle"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:text="Ice"
+				        android:textStyle="bold"
+				        android:textSize="20sp"  />
+		             <TextView
+				        android:layout_width="fill_parent"
+				        android:layout_height="26dip"
+				        android:ellipsize="marquee"
+				        android:singleLine="true"
+				        android:text="$1.00"
+				        android:textSize="17sp" />
+				</LinearLayout>
+	            
+	             
+	            <!-- amount of items chooser -->
+		            <Button
+			            android:id="@+id/minusLemon"
+			            style="?android:attr/buttonStyleSmall"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="-" />
+		            
+		            <TextView
+		                android:id="@+id/lemonAmt"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginRight="5dp"
+			            android:layout_marginLeft="5dp"
+			            android:textSize="25sp"
+			            android:text="10" />
+		            
+		            <Button
+		                android:id="@+id/plusLemon"
+		                style="?android:attr/buttonStyleSmall"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="+" />
+	        </TableRow>
+	        
+	        <!-- Advertising Row -->
+	        <TableRow
+	            android:id="@+id/tableRow5"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content" 
+	            android:gravity="center"
+	            android:background="@drawable/textlines" >
+		            
+	             <LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginRight="30dp"
+				    android:orientation="vertical"
+				    android:gravity="center_vertical" >
+		             <TextView
+				        android:id="@+id/adtitle"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center_vertical"
+				        android:text="Advertising"
+				        android:textStyle="bold"
+				        android:textSize="20sp"  />
+		             <TextView
+				        android:layout_width="fill_parent"
+				        android:layout_height="26dip"
+				        android:ellipsize="marquee"
+				        android:singleLine="true"
+				        android:text="$1.00"
+				        android:textSize="17sp" />
+				</LinearLayout>
+	            
+	             
+	            <!-- amount of items chooser -->
+		            <Button
+			            android:id="@+id/minusLemon"
+			            style="?android:attr/buttonStyleSmall"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text="-" />
+		            
+		            <TextView
+		                android:id="@+id/lemonAmt"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginRight="5dp"
+			            android:layout_marginLeft="5dp"
+			            android:textSize="25sp"
+			            android:text="10" />
+		            
+		            <Button
+		                android:id="@+id/plusLemon"
+		                style="?android:attr/buttonStyleSmall"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/plus" />
+	        </TableRow>
+	    </TableLayout>
+	    
+	    <!-- cost and buy button -->
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/supplyTable"
+	        android:background="@color/LightGreen"
+	        android:gravity="center"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="90dp"
+	            android:text="$100.00"
+	            android:textSize="30sp"
+	            android:textStyle="bold" />
+	
+	        <Button
+	            android:id="@+id/buyBtn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="10dp"
+	            android:background="@color/Orange"
+	            android:text="@string/buy"
+	            android:textSize="30sp"
+	            android:textStyle="bold" />
+	    </LinearLayout>
 
-</LinearLayout>
+    </RelativeLayout>
+    
+</ScrollView>
+
+       
+

@@ -6,6 +6,8 @@
     <string name="title_stand">Stand</string>
     <string name="title_market">Market</string>
     <string name="title_bank">Bank</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
     
     <string name="label_status_money">Money: </string>
     <string name="status_money">   </string>
@@ -28,6 +30,12 @@
 	<string name="cups">C: </string>
 	<string name="ice">I: </string>
 
+	
+	<!-- market fragment strings -->
+	<string name="buy">BUY</string>
+	
+	
+	<!-- bank fragment strings -->
     
     <!-- navigation drawer stuff -->
     <string-array name="Pause_OptionList">
