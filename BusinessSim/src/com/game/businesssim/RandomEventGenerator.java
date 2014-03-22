@@ -9,17 +9,13 @@ public class RandomEventGenerator {
 
 	private ArrayList<RandomEvent> events = new ArrayList<RandomEvent>();
 
+	//initialzes the events array
 	public RandomEventGenerator() {
-
 		BufferedReader br = null;
-
 		try {
-
 			String sCurrentLine;
 			String[] eventStrings;
-
 			br = new BufferedReader(new FileReader("assets/events.txt"));
-
 			while ((sCurrentLine = br.readLine()) != null) {
 				eventStrings = sCurrentLine.trim().split("\\s*,\\s*");
 				this.events.add(new RandomEvent(eventStrings[0],
@@ -28,13 +24,12 @@ public class RandomEventGenerator {
 								.parseInt(eventStrings[4]), Integer
 								.parseInt(eventStrings[5]), Integer
 								.parseInt(eventStrings[6]), Integer
-								.parseInt(eventStrings[7]), Integer
-								.parseInt(eventStrings[8]), Integer
+								.parseInt(eventStrings[7]), Double
+								.parseDouble(eventStrings[8]), Integer
 								.parseInt(eventStrings[9]), Integer
 								.parseInt(eventStrings[10]), Integer
-								.parseInt(eventStrings[11]), Integer
-								.parseInt(eventStrings[12]), Integer
-								.parseInt(eventStrings[13])));
+								.parseInt(eventStrings[12]), Double
+								.parseDouble(eventStrings[13])));
 			}
 
 		} catch (IOException e) {
@@ -47,26 +42,18 @@ public class RandomEventGenerator {
 				ex.printStackTrace();
 			}
 		}
-
-//		this.events.add(new RandomEvent("One", "lemon", 0, 5, 0, 0, 0, 0, 0, 0,
-//				0, 0, 0, 0));
-//		events.add(new RandomEvent("Two", "ice", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-//				0, 0));
-
-		// int size = 2;
-		// RandomEvent event;
-		// for(int i=0;i<size;i++){
-		//
-		// }
 	}
 
+	//chooses an event at random, runs a check, then returns the event
 	public RandomEvent chooseEvent(Business biz) {
 		int rand = (int) Math.random() * events.size();
 		RandomEvent event = events.get(rand);
 		event = checkEvent(events.get(rand), biz);
 		return event;
 	}
-
+	
+	
+	//makes sure the player won't go in the negatives for anything
 	private RandomEvent checkEvent(RandomEvent event, Business biz) {
 		if (biz.getProfit()+event.getProfit()<0)
 			event.setProfit(-biz.getProfit());
