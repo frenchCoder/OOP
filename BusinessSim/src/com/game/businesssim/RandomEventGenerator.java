@@ -1,34 +1,94 @@
 package com.game.businesssim;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-
 public class RandomEventGenerator {
-	
+
 	private ArrayList<RandomEvent> events = new ArrayList<RandomEvent>();
-	
-	public RandomEventGenerator(){
-		events.add(new RandomEvent("One", "lemon", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-		events.add(new RandomEvent("Two", "ice", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
-		
-//		int size = 2;
-//		RandomEvent event;
-//		for(int i=0;i<size;i++){
-//			
-//		}
-	}	
-	
-	public RandomEvent chooseEvent(){
-		int rand = (int) Math.random()*events.size();
-		return (checkEvent(events.get(rand)))?events.get(rand):null;
+
+	public RandomEventGenerator() {
+
+		BufferedReader br = null;
+
+		try {
+
+			String sCurrentLine;
+			String[] eventStrings;
+
+			br = new BufferedReader(new FileReader("assets/events.txt"));
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				eventStrings = sCurrentLine.trim().split("\\s*,\\s*");
+				this.events.add(new RandomEvent(eventStrings[0],
+						eventStrings[1], Integer.parseInt(eventStrings[2]),
+						Integer.parseInt(eventStrings[3]), Integer
+								.parseInt(eventStrings[4]), Integer
+								.parseInt(eventStrings[5]), Integer
+								.parseInt(eventStrings[6]), Integer
+								.parseInt(eventStrings[7]), Integer
+								.parseInt(eventStrings[8]), Integer
+								.parseInt(eventStrings[9]), Integer
+								.parseInt(eventStrings[10]), Integer
+								.parseInt(eventStrings[11]), Integer
+								.parseInt(eventStrings[12]), Integer
+								.parseInt(eventStrings[13])));
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (br != null)
+					br.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+//		this.events.add(new RandomEvent("One", "lemon", 0, 5, 0, 0, 0, 0, 0, 0,
+//				0, 0, 0, 0));
+//		events.add(new RandomEvent("Two", "ice", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+//				0, 0));
+
+		// int size = 2;
+		// RandomEvent event;
+		// for(int i=0;i<size;i++){
+		//
+		// }
 	}
-	
-	private boolean checkEvent(RandomEvent event){
-		return true;
+
+	public RandomEvent chooseEvent(Business biz) {
+		int rand = (int) Math.random() * events.size();
+		RandomEvent event = events.get(rand);
+		event = checkEvent(events.get(rand), biz);
+		return event;
 	}
-	
-	
+
+	private RandomEvent checkEvent(RandomEvent event, Business biz) {
+		if (biz.getProfit()+event.getProfit()<0)
+			event.setProfit(-biz.getProfit());
+		if(biz.getLemonCount()+event.getLemonCount()<0)
+			event.setLemonCount(-biz.getLemonCount());
+		if(biz.getIceCount()+event.getIceCount()<0)
+			event.setIceCount(-biz.getIceCount());
+		if(biz.getCupCount()+event.getCupCount()<0)
+			event.setCupCount(-biz.getCupCount());
+		if(biz.getLemonQuantity()+event.getLemonadeQty()<0)
+			event.setLemonadeQty(-biz.getLemonQuantity());
+		if(biz.getSugarCount()+event.getSugarCount()<0)
+			event.setSugarCount(-biz.getSugarCount());
+		if(biz.getNumLoans()+event.getNumLoans()<0)
+			event.setNumLoans(-biz.getNumLoans());
+		if(biz.getNumAds()+event.getNumAds()<0)
+			event.setNumAds(-biz.getNumAds());
+		if(biz.getCupsSold()+event.getCupSold()<0)
+			event.setCupSold(-biz.getCupsSold());
+		if(biz.getPricePerCup()+event.getPricePerCup()<0)
+			event.setPricePerCup(-biz.getPricePerCup());
+		return event;
+	}
 
 }
