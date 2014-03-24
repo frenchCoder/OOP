@@ -106,8 +106,13 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         // old game
         mBusiness = null;
         try {
+<<<<<<< HEAD
            if (extra != null && extra.containsKey("loadGame")){
                mBusiness = loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
+=======
+           if (extra != null && extra.containsKey("loadGame"){
+               loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
+>>>>>>> acc16621db9d08842f38621ddde098e2b6a5f27e
            }
            else{  // something went wrong (loadGame variable not passed, create a new game by default
                mBusiness = loadGame(false);
@@ -123,8 +128,14 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         moneyText.setText(String.format("$%.2f",mBusiness.getProfit()));
         // Create timer and start countdown
         timerText = (TextView) findViewById(R.id.status_time);
+<<<<<<< HEAD
 
         startTimer(mBusiness.getStartTime(),INTERVAL);
+=======
+        mTimer = new Timer(MAX_TIME,INTERVAL);
+        mTimer.start();
+        
+>>>>>>> acc16621db9d08842f38621ddde098e2b6a5f27e
 	}
 
 
