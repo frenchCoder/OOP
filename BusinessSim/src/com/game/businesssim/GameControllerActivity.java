@@ -40,20 +40,23 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 	 */
 	protected ViewPager mViewPager;
     protected Timer mTimer;
-    protected StandFragment mStandFragment;
+    protected Business mBusiness;
     protected TextView timerText ;
     protected TextView moneyText;
 
     public static int MAX_TIME = 60000;  // 1 minute
     public static int INTERVAL = 1000;
-    public int MAX_DAYS = 30; // TODO: show final dialog box and start new activity?
-
+    public int MAX_DAYS = 30; // TODO: show final dialog box and call finish()
+    public static int SECONDS_IN_MINUTE = 60;
+    public static int THIRTY_MINUTES = 3;
+    public static int HOUR = 6;
     private String FILENAME = "businessInfo.dat";
 
     protected long timeResumed;
     protected boolean mInitialPanelOpen = true; // this variable keeps track of first panel opening
     protected boolean menuOpened = false;
     protected int mDay = 1;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,35 +98,41 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 					.setTabListener(this));
 		}
 
-        // create business
-        mStandFragment = (StandFragment)mSectionsPagerAdapter.getItem(0);
-
         // get intent that created this activity
         Intent intent = getIntent();
         Bundle extra = intent.getExtras();
 
         // retrieve boolean value as to whether or not the user wants to load a new or
         // old game
+        mBusiness = null;
         try {
-           if (extra != null && extra.containsKey("loadGame")){
+			// There was a conflict here I figured I should keep the latest change
+           //if (extra != null && extra.containsKey("loadGame")){
+           //    mBusiness = loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
+           if (extra != null && extra.containsKey("loadGame"){
                loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
            }
            else{  // something went wrong (loadGame variable not passed, create a new game by default
-               loadGame(false);
+               mBusiness = loadGame(false);
            }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        mDay = mStandFragment.getBusinessInfo().getDay();
+        mDay = mBusiness.getDay();
 
         // retrieve and set money amount
         moneyText = (TextView) findViewById(R.id.status_money);
-        moneyText.setText(String.format("$%.2f",mStandFragment.getBusinessInfo().getProfit()));
+        moneyText.setText(String.format("$%.2f",mBusiness.getProfit()));
         // Create timer and start countdown
         timerText = (TextView) findViewById(R.id.status_time);
+		
+		// there was a conflic there, the comment is what I though was the old
+        //startTimer(mBusiness.getStartTime(),INTERVAL);
+
         mTimer = new Timer(MAX_TIME,INTERVAL);
         mTimer.start();
+
 	}
 
 
@@ -199,6 +208,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 			FragmentTransaction fragmentTransaction) {
 		// When the given tab is selected, switch to the corresponding page in
 		// the ViewPager.
+
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
@@ -261,6 +271,10 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 		}
 	}
 
+    public Business getBusiness(){
+        return mBusiness;
+    }
+
     /**
      * Saves the current instance of the business object
      */
@@ -268,7 +282,8 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
        try{
 
            ObjectOutputStream objectOutputStream = new ObjectOutputStream(openFileOutput(FILENAME,Context.MODE_PRIVATE));
-           objectOutputStream.writeObject(mStandFragment.getBusinessInfo());
+           mBusiness.setStartTime(timeResumed);
+           objectOutputStream.writeObject(mBusiness);
            objectOutputStream.close();
 
        }catch (IOException e){
@@ -280,7 +295,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
      * Load a game based on whether or not loadFile is true, otherwise create new business object
      * @param loadFile  determines whether or not to load a file from memory
      */
-    public void loadGame(boolean loadFile) throws IOException{
+    public Business loadGame(boolean loadFile) throws IOException{
 
         if (loadFile){
             try{
@@ -292,7 +307,6 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
                     // get business object
                     Business obj = (Business)objectInputStream.readObject();
                     objectInputStream.close();
-                    mStandFragment.recreateBusiness(obj);
 
                     // let user now that game was successfully loaded
                     Context context = getApplicationContext();
@@ -300,6 +314,8 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
                     if (context != null){
                         Toast.makeText(getApplicationContext(),R.string.game_loaded, Toast.LENGTH_LONG).show();
                     }
+
+                    return new Business(obj);
 
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
@@ -309,9 +325,8 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
             }
 
         }
-        else {
-            mStandFragment.createNewBusiness();
-        }
+
+        return new Business();
     }
 
     /**
@@ -355,13 +370,13 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
     public void showSummary(){
 
         AlertDialog.Builder summaryDialog = new AlertDialog.Builder(GameControllerActivity.this);
-        summaryDialog.setMessage(mStandFragment.getBusinessInfo().getDailySummary());
+        summaryDialog.setMessage(mBusiness.getDailySummary());
         summaryDialog.setTitle(R.string.summary_title);
 
-        summaryDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        summaryDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                mStandFragment.getBusinessInfo().nextDay();
-                mDay = mStandFragment.getBusinessInfo().getDay();
+                mBusiness.nextDay();
+                mDay = mBusiness.getDay();
                 startTimer(MAX_TIME, INTERVAL);
             }
         });
@@ -376,10 +391,10 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
     public void showGameOverDialog(){
 
         AlertDialog.Builder gameOverDialog = new AlertDialog.Builder(GameControllerActivity.this);
-        gameOverDialog.setMessage(mStandFragment.getBusinessInfo().getDailySummary());
+        gameOverDialog.setMessage(mBusiness.getDailySummary());
         gameOverDialog.setTitle(R.string.game_over);
 
-        gameOverDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        gameOverDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 finish();
             }
@@ -389,6 +404,18 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         gameOverDialog.show();
     }
 
+    /**
+     * Get's the formatted string for the time based on seconds left in game
+     * @param seconds seconds left in the game
+     * @return formatted string that represent the time in the day
+     */
+    public String getTime(int seconds){
+        String hour = Integer.toString((7 + seconds / HOUR) % 12 + 1);
+        String minute= (seconds % HOUR) == 0 ? "00" : "30";
+        String midday = seconds < 24 ? "AM" : "PM";
+        return hour + ":"+minute+" "+midday;
+    }
+
 
     /**
      * Start a new instance of the countdown timer
@@ -396,6 +423,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
      * @param countDownInterval
      */
     public void startTimer(long millisInFuture, long countDownInterval){
+        timerText.setText(getTime((int)(SECONDS_IN_MINUTE - millisInFuture/INTERVAL)));
         mTimer = new Timer(millisInFuture,countDownInterval);
         mTimer.start();
     }
@@ -412,7 +440,12 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         // TODO: add customer array updates here
         public void onTick(long millisUntilFinished) {
             timeResumed = millisUntilFinished;
-            timerText.setText("" + millisUntilFinished / INTERVAL);
+            long seconds = SECONDS_IN_MINUTE - (millisUntilFinished / INTERVAL);
+
+
+            if(seconds % THIRTY_MINUTES == 0){
+                timerText.setText(getTime((int)seconds));
+           }
         }
 
         /**
@@ -420,7 +453,6 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
          */
         public void onFinish() {
             timerText.setText(R.string.closed);
-
             if (mDay == MAX_DAYS){
                 showGameOverDialog();
             }
@@ -430,5 +462,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         }
 
     }
+
+
 
 }

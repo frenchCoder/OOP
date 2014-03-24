@@ -3,7 +3,7 @@
         android:id="@+id/action_mainmenu"
         android:orderInCategory="100"
         android:showAsAction="never"
-        android:title="@string/pause_save"/>
+        android:title="@string/pause_mainmenu"/>
     <item
         android:id="@+id/action_save"
         android:orderInCategory="100"

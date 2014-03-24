@@ -180,14 +180,13 @@
 			         android:layout_alignParentRight="true"
 				     android:text="-"/>
 
-				<TextView
+				<TextView android:id="@+id/priceText"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    android:layout_above="@+id/minusBtn"
 				    android:layout_margin="5dp"
 				    android:layout_marginRight="50dp"
 				    android:layout_toLeftOf="@+id/plusBtn"
-				    android:text="$100.00" 
 				    android:textStyle="bold"
 				    android:textSize="25sp"
 				    android:background="@color/White"/>
