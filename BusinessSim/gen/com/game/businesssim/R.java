@@ -9,7 +9,8 @@ package com.game.businesssim;
 
 public final class R {
     public static final class array {
-        /**  navigation drawer stuff 
+        /**  bank fragment strings 
+ navigation drawer stuff 
          */
         public static final int Pause_OptionList=0x7f080001;
         public static final int dialog_options=0x7f080000;
@@ -172,42 +173,60 @@ public final class R {
         public static final int drawer_shadow=0x7f020000;
         public static final int ic_drawer=0x7f020001;
         public static final int ic_launcher=0x7f020002;
-        public static final int stand=0x7f020003;
+        public static final int lemonade_splash1=0x7f020003;
+        public static final int stand=0x7f020004;
+        public static final int textlines=0x7f020005;
     }
     public static final class id {
-        public static final int action_glossary=0x7f0b001f;
-        public static final int action_howto=0x7f0b0020;
-        public static final int action_mainmenu=0x7f0b001d;
-        public static final int action_save=0x7f0b001e;
+        public static final int action_glossary=0x7f0b002f;
+        public static final int action_howto=0x7f0b0030;
+        public static final int action_mainmenu=0x7f0b002d;
+        public static final int action_save=0x7f0b002e;
+        public static final int adtitle=0x7f0b0020;
+        public static final int buyBtn=0x7f0b0021;
         public static final int chooseGameBtn=0x7f0b0004;
+        public static final int cuptitle=0x7f0b001b;
         public static final int details=0x7f0b000c;
         public static final int getLoanBtn=0x7f0b000b;
-        public static final int glossary=0x7f0b001a;
+        public static final int glossary=0x7f0b002a;
         public static final int glossaryBtn=0x7f0b0006;
         public static final int highscoreBtn=0x7f0b0007;
         public static final int howtoBtn=0x7f0b0005;
+        public static final int icetitle=0x7f0b001e;
         public static final int input_PayLoan=0x7f0b000f;
-        public static final int makeBtn=0x7f0b0016;
-        public static final int minusBtn=0x7f0b0018;
-        public static final int name=0x7f0b001b;
+        public static final int lemonAmt=0x7f0b0018;
+        public static final int lemontitle=0x7f0b0015;
+        public static final int makeBtn=0x7f0b0026;
+        public static final int marketTitle=0x7f0b0012;
+        public static final int minusBtn=0x7f0b0028;
+        public static final int minusLemon=0x7f0b0017;
+        public static final int name=0x7f0b002b;
         public static final int pager=0x7f0b0003;
         public static final int payLoanBtn=0x7f0b0010;
-        public static final int plusBtn=0x7f0b0017;
+        public static final int plusBtn=0x7f0b0027;
+        public static final int plusLemon=0x7f0b0019;
         public static final int radioButton1=0x7f0b0008;
         public static final int radioButton2=0x7f0b0009;
         public static final int radioButton3=0x7f0b000a;
-        public static final int score=0x7f0b001c;
+        public static final int score=0x7f0b002c;
+        public static final int secondLine=0x7f0b0016;
         public static final int section_label=0x7f0b0011;
         public static final int status_money=0x7f0b0001;
         public static final int status_time=0x7f0b0002;
         public static final int status_view=0x7f0b0000;
-        public static final int text_cupCnt=0x7f0b0013;
-        public static final int text_iceCnt=0x7f0b0014;
-        public static final int text_lemonCnt=0x7f0b0012;
-        public static final int text_lemonadeCnt=0x7f0b0019;
+        public static final int supplyTable=0x7f0b0013;
+        public static final int tableRow1=0x7f0b0014;
+        public static final int tableRow2=0x7f0b001a;
+        public static final int tableRow3=0x7f0b001c;
+        public static final int tableRow4=0x7f0b001d;
+        public static final int tableRow5=0x7f0b001f;
+        public static final int text_cupCnt=0x7f0b0023;
+        public static final int text_iceCnt=0x7f0b0024;
+        public static final int text_lemonCnt=0x7f0b0022;
+        public static final int text_lemonadeCnt=0x7f0b0029;
         public static final int text_owed=0x7f0b000d;
         public static final int text_owedWithInterest=0x7f0b000e;
-        public static final int text_sugarCnt=0x7f0b0015;
+        public static final int text_sugarCnt=0x7f0b0025;
     }
     public static final class layout {
         public static final int activity_game=0x7f030000;
@@ -267,6 +286,34 @@ public final class R {
         public static final int title_market=0x7f070003;
         public static final int title_stand=0x7f070002;
         public static final int yes=0x7f070011;
+
+        /**  market fragment strings 
+         */
+        public static final int buy=0x7f070021;
+        public static final int cancel=0x7f070017;
+        public static final int closed=0x7f070018;
+        public static final int cups=0x7f07001f;
+        public static final int day_summary=0x7f070012;
+        /**  stand fragment strings 
+         */
+        public static final int lemons=0x7f07001d;
+        public static final int minus=0x7f070006;
+        public static final int ok=0x7f070015;
+        public static final int ok_to_exit=0x7f070014;
+        public static final int pause_glossary=0x7f070010;
+        public static final int pause_howto=0x7f070011;
+        public static final int pause_mainmenu=0x7f07000f;
+        public static final int pause_save=0x7f07000e;
+        public static final int plus=0x7f070005;
+        public static final int status_money=0x7f070008;
+        public static final int status_time=0x7f07000a;
+        public static final int sugar=0x7f07001e;
+        public static final int summary_title=0x7f07000b;
+        public static final int title_bank=0x7f070004;
+        public static final int title_market=0x7f070003;
+        public static final int title_stand=0x7f070002;
+        public static final int yes=0x7f070013;
+
     }
     public static final class style {
         /** 
