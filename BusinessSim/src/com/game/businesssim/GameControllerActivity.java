@@ -109,7 +109,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
 			// There was a conflict here I figured I should keep the latest change
            //if (extra != null && extra.containsKey("loadGame")){
            //    mBusiness = loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
-           if (extra != null && extra.containsKey("loadGame"){
+           if (extra != null && extra.containsKey("loadGame")){
                loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
            }
            else{  // something went wrong (loadGame variable not passed, create a new game by default
