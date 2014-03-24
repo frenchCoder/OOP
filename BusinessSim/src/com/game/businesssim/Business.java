@@ -2,9 +2,6 @@ package com.game.businesssim;
 
 import java.io.Serializable;
 
-/**
- * Created by Cindy on 3/16/14.
- */
 public class Business implements Serializable {
     private int lemonCount;
     private int iceCount;
@@ -17,6 +14,18 @@ public class Business implements Serializable {
     private int day;
     private int cupSold;
     private double pricePerCup;
+    private long startTime;
+
+    private static double PRICE_CHANGE = 0.25;
+    private static int SUGAR_PER_CUP = 2;
+    private static int ICE_PER_CUP = 2;
+    private static int LEMON_PER_CUP = 1;
+    private static int CUPS_PER_PITCHER = 30;
+
+    private int iceInPitcher;
+    private int sugarInPitcher;
+    private int cupsPerPitcher;
+    private int lemonsInPitcher;
 
     //new game
     Business(){
@@ -31,6 +40,7 @@ public class Business implements Serializable {
         day=1;
         cupSold = 0;
         pricePerCup = .25;
+        startTime = 60000;
     }
 
     Business(Business business){
@@ -45,13 +55,22 @@ public class Business implements Serializable {
         day =  business.getDay();
         cupSold = business.getCupsSold();
         pricePerCup = business.getPricePerCup();
+        startTime = business.getStartTime();
+    }
+
+    public long getStartTime(){
+        return startTime;
+    }
+
+    public void setStartTime(long time){
+        startTime = time;
     }
 
     public double getProfit(){
         return profit;
     }
 
-    public void setProfit(float money){
+    public void setProfit(double money){
         profit=money;
     }
 
@@ -127,8 +146,64 @@ public class Business implements Serializable {
         return cupSold;
     }
 
-    public void increasePricePerCup(double cent){
-        pricePerCup += cent;
+    public void increasePricePerCup(){
+        pricePerCup += PRICE_CHANGE;
+    }
+
+    public void makeLemonade(){
+
+        // check if pitcher is already full
+        if (lemonadeQty == 100) return;
+
+        // determine the most amount of lemonade that can be made
+        int iceNeeded = ICE_PER_CUP*CUPS_PER_PITCHER - iceInPitcher;
+        int cupsNeeded = CUPS_PER_PITCHER - cupsPerPitcher;
+        int sugarNeeded = CUPS_PER_PITCHER*SUGAR_PER_CUP - sugarInPitcher;
+        int lemonsNeeded = CUPS_PER_PITCHER*LEMON_PER_CUP - lemonsInPitcher;
+
+        // determine minimum amount of cups of lemonade that can be made
+        int totalCups = Math.min(iceNeeded/2, sugarNeeded/2);
+
+        // check if there is enough supplies to make some lemonade
+        if (iceCount - totalCups*ICE_PER_CUP <= 0) return;
+        if (cupCount - totalCups <= 0) return;
+        if (sugarCount - totalCups*SUGAR_PER_CUP <= 0) return;
+        if (lemonCount - totalCups*LEMON_PER_CUP <= 0) return;
+
+        lemonadeQty += (totalCups * 100) / CUPS_PER_PITCHER;
+
+        // decrement supplies for this batch of lemonade
+        iceCount -= iceNeeded;
+        cupCount -= cupsNeeded;
+        sugarCount -= sugarNeeded;
+        lemonCount -= lemonsNeeded;
+
+        // increment the amount of supplies that are currently in a batch of lemonade
+        iceInPitcher += iceNeeded;
+        cupsPerPitcher += cupsNeeded;
+        sugarInPitcher += sugarNeeded;
+        lemonsInPitcher += lemonsInPitcher;
+    }
+
+    public void sellLemonade(int totalCustomers){
+
+        // check if there is enough lemonade to sell to this many customers
+        if (cupsPerPitcher - totalCustomers <= 0){
+            totalCustomers = cupsPerPitcher;
+        }
+
+        cupsPerPitcher -= totalCustomers;
+        iceInPitcher -= totalCustomers*ICE_PER_CUP;
+        sugarInPitcher -= totalCustomers*SUGAR_PER_CUP;
+        lemonsInPitcher -= totalCustomers*LEMON_PER_CUP;
+        profit += pricePerCup*totalCustomers;
+        cupSold += totalCustomers;
+    }
+
+    public void decreasePricePerCup(){
+        if(pricePerCup - PRICE_CHANGE > 0){
+            pricePerCup -= PRICE_CHANGE;
+        }
     }
 
     public double getPricePerCup(){
