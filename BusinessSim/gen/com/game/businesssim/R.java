@@ -178,17 +178,17 @@ public final class R {
         public static final int textlines=0x7f020005;
     }
     public static final class id {
-        public static final int action_glossary=0x7f0b002f;
-        public static final int action_howto=0x7f0b0030;
-        public static final int action_mainmenu=0x7f0b002d;
-        public static final int action_save=0x7f0b002e;
+        public static final int action_glossary=0x7f0b0030;
+        public static final int action_howto=0x7f0b0031;
+        public static final int action_mainmenu=0x7f0b002e;
+        public static final int action_save=0x7f0b002f;
         public static final int adtitle=0x7f0b0020;
         public static final int buyBtn=0x7f0b0021;
         public static final int chooseGameBtn=0x7f0b0004;
         public static final int cuptitle=0x7f0b001b;
         public static final int details=0x7f0b000c;
         public static final int getLoanBtn=0x7f0b000b;
-        public static final int glossary=0x7f0b002a;
+        public static final int glossary=0x7f0b002b;
         public static final int glossaryBtn=0x7f0b0006;
         public static final int highscoreBtn=0x7f0b0007;
         public static final int howtoBtn=0x7f0b0005;
@@ -200,15 +200,16 @@ public final class R {
         public static final int marketTitle=0x7f0b0012;
         public static final int minusBtn=0x7f0b0028;
         public static final int minusLemon=0x7f0b0017;
-        public static final int name=0x7f0b002b;
+        public static final int name=0x7f0b002c;
         public static final int pager=0x7f0b0003;
         public static final int payLoanBtn=0x7f0b0010;
         public static final int plusBtn=0x7f0b0027;
         public static final int plusLemon=0x7f0b0019;
+        public static final int priceText=0x7f0b0029;
         public static final int radioButton1=0x7f0b0008;
         public static final int radioButton2=0x7f0b0009;
         public static final int radioButton3=0x7f0b000a;
-        public static final int score=0x7f0b002c;
+        public static final int score=0x7f0b002d;
         public static final int secondLine=0x7f0b0016;
         public static final int section_label=0x7f0b0011;
         public static final int status_money=0x7f0b0001;
@@ -223,7 +224,7 @@ public final class R {
         public static final int text_cupCnt=0x7f0b0023;
         public static final int text_iceCnt=0x7f0b0024;
         public static final int text_lemonCnt=0x7f0b0022;
-        public static final int text_lemonadeCnt=0x7f0b0029;
+        public static final int text_lemonadeCnt=0x7f0b002a;
         public static final int text_owed=0x7f0b000d;
         public static final int text_owedWithInterest=0x7f0b000e;
         public static final int text_sugarCnt=0x7f0b0025;
@@ -249,44 +250,6 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f070001;
         public static final int app_name=0x7f070000;
-        public static final int cancel=0x7f070015;
-        public static final int closed=0x7f070016;
-        public static final int cups=0x7f07001d;
-        public static final int day_summary=0x7f070010;
-        /**   MainMenu strings 
-         */
-        public static final int dialog_title=0x7f070018;
-        public static final int drawer_close=0x7f070020;
-        public static final int drawer_open=0x7f07001f;
-        public static final int game_loaded=0x7f07000b;
-        public static final int game_not_saved=0x7f070014;
-        public static final int game_over=0x7f070017;
-        public static final int game_saved=0x7f07000a;
-        public static final int ice=0x7f07001e;
-        public static final int instructions=0x7f07001a;
-        /**  how to page strings 
-         */
-        public static final int instructionsTitle=0x7f070019;
-        public static final int label_status_money=0x7f070005;
-        public static final int label_status_time=0x7f070007;
-        /**  stand fragment strings 
-         */
-        public static final int lemons=0x7f07001b;
-        public static final int ok=0x7f070013;
-        public static final int ok_to_exit=0x7f070012;
-        public static final int pause_glossary=0x7f07000e;
-        public static final int pause_howto=0x7f07000f;
-        public static final int pause_mainmenu=0x7f07000d;
-        public static final int pause_save=0x7f07000c;
-        public static final int status_money=0x7f070006;
-        public static final int status_time=0x7f070008;
-        public static final int sugar=0x7f07001c;
-        public static final int summary_title=0x7f070009;
-        public static final int title_bank=0x7f070004;
-        public static final int title_market=0x7f070003;
-        public static final int title_stand=0x7f070002;
-        public static final int yes=0x7f070011;
-
         /**  market fragment strings 
          */
         public static final int buy=0x7f070021;
@@ -294,6 +257,22 @@ public final class R {
         public static final int closed=0x7f070018;
         public static final int cups=0x7f07001f;
         public static final int day_summary=0x7f070012;
+        /**   MainMenu strings 
+         */
+        public static final int dialog_title=0x7f07001a;
+        public static final int drawer_close=0x7f070023;
+        public static final int drawer_open=0x7f070022;
+        public static final int game_loaded=0x7f07000d;
+        public static final int game_not_saved=0x7f070016;
+        public static final int game_over=0x7f070019;
+        public static final int game_saved=0x7f07000c;
+        public static final int ice=0x7f070020;
+        public static final int instructions=0x7f07001c;
+        /**  how to page strings 
+         */
+        public static final int instructionsTitle=0x7f07001b;
+        public static final int label_status_money=0x7f070007;
+        public static final int label_status_time=0x7f070009;
         /**  stand fragment strings 
          */
         public static final int lemons=0x7f07001d;
@@ -313,7 +292,6 @@ public final class R {
         public static final int title_market=0x7f070003;
         public static final int title_stand=0x7f070002;
         public static final int yes=0x7f070013;
-
     }
     public static final class style {
         /** 
