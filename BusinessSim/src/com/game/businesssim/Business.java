@@ -22,14 +22,11 @@ public class Business implements Serializable {
     private static int LEMON_PER_CUP = 1;
     private static int CUPS_PER_PITCHER = 30;
 
-    private int iceInPitcher;
-    private int sugarInPitcher;
-    private int cupsPerPitcher;
-    private int lemonsInPitcher;
+    private int cupsPerPitcher;  // the number of cups currently in pitcher
 
     //new game
-    Business(){
-        profit=100;
+    Business(){  // TODO: change appropriate values back to zero!
+        profit=0;
         numAds=0;
         numLoans=1;
         sugarCount=0;
@@ -155,8 +152,13 @@ public class Business implements Serializable {
         // check if pitcher is already full
         if (lemonadeQty == 100) return;
 
+        // determine the amount of lemon, sugar, and ice currently in pitcher
+        int lemonsInPitcher = cupsPerPitcher*LEMON_PER_CUP;
+        int sugarInPitcher = cupsPerPitcher*SUGAR_PER_CUP;
+        int iceInPitcher = cupsPerPitcher*ICE_PER_CUP;
+
         // determine the most amount of lemonade that can be made
-        int iceNeeded = ICE_PER_CUP*CUPS_PER_PITCHER - iceInPitcher;
+        int iceNeeded = CUPS_PER_PITCHER*ICE_PER_CUP - iceInPitcher;
         int cupsNeeded = CUPS_PER_PITCHER - cupsPerPitcher;
         int sugarNeeded = CUPS_PER_PITCHER*SUGAR_PER_CUP - sugarInPitcher;
         int lemonsNeeded = CUPS_PER_PITCHER*LEMON_PER_CUP - lemonsInPitcher;
@@ -170,19 +172,17 @@ public class Business implements Serializable {
         if (sugarCount - totalCups*SUGAR_PER_CUP <= 0) return;
         if (lemonCount - totalCups*LEMON_PER_CUP <= 0) return;
 
-        lemonadeQty += (totalCups * 100) / CUPS_PER_PITCHER;
+        // increment the amount of supplies that are currently in a batch of lemonade
+        cupsPerPitcher += totalCups;
 
-        // decrement supplies for this batch of lemonade
+        // increase the lemonade quantity
+        lemonadeQty += (cupsPerPitcher * 100) / CUPS_PER_PITCHER;
+
+        // decrement supplies used for this batch of lemonade
         iceCount -= iceNeeded;
         cupCount -= cupsNeeded;
         sugarCount -= sugarNeeded;
         lemonCount -= lemonsNeeded;
-
-        // increment the amount of supplies that are currently in a batch of lemonade
-        iceInPitcher += iceNeeded;
-        cupsPerPitcher += cupsNeeded;
-        sugarInPitcher += sugarNeeded;
-        lemonsInPitcher += lemonsInPitcher;
     }
 
     public void sellLemonade(int totalCustomers){
@@ -193,9 +193,6 @@ public class Business implements Serializable {
         }
 
         cupsPerPitcher -= totalCustomers;
-        iceInPitcher -= totalCustomers*ICE_PER_CUP;
-        sugarInPitcher -= totalCustomers*SUGAR_PER_CUP;
-        lemonsInPitcher -= totalCustomers*LEMON_PER_CUP;
         profit += pricePerCup*totalCustomers;
         cupSold += totalCustomers;
     }
