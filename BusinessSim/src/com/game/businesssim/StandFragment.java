@@ -68,6 +68,10 @@ public class StandFragment extends Fragment {
                 businessInfo.makeLemonade();
                 String percent = "%";
                 lemonadeQtyText.setText(String.format("%d%s", businessInfo.getLemonQuantity(), percent));
+                lemonCntText.setText(String.format("%d", businessInfo.getLemonCount()));
+                cupCntText.setText(String.format("%d", businessInfo.getCupCount()));
+                iceCntText.setText(String.format("%d", businessInfo.getIceCount()));
+                sugarCntText.setText(String.format("%d", businessInfo.getSugarCount()));
             }
 
         });

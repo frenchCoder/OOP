@@ -43,6 +43,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
     protected Business mBusiness;
     protected TextView timerText ;
     protected TextView moneyText;
+    protected CustomerFrequencyGenerator mCustomFreq;
 
     public static int MAX_TIME = 60000;  // 1 minute
     public static int INTERVAL = 1000;
@@ -56,9 +57,9 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
     protected boolean mInitialPanelOpen = true; // this variable keeps track of first panel opening
     protected boolean menuOpened = false;
     protected int mDay = 1;
+    protected int[] customers;
 
-
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
@@ -106,9 +107,6 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         // old game
         mBusiness = null;
         try {
-			// There was a conflict here I figured I should keep the latest change
-           //if (extra != null && extra.containsKey("loadGame")){
-           //    mBusiness = loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
            if (extra != null && extra.containsKey("loadGame")){
                loadGame(extra.getBoolean("loadGame"));  // TODO: change to take in info from savedInstanceState
            }
@@ -119,22 +117,17 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
             e.printStackTrace();
         }
 
-        mDay = mBusiness.getDay();
-
         // retrieve and set money amount
         moneyText = (TextView) findViewById(R.id.status_money);
         moneyText.setText(String.format("$%.2f",mBusiness.getProfit()));
         // Create timer and start countdown
         timerText = (TextView) findViewById(R.id.status_time);
-		
-		// there was a conflic there, the comment is what I though was the old
-        //startTimer(mBusiness.getStartTime(),INTERVAL);
 
-        mTimer = new Timer(MAX_TIME,INTERVAL);
-        mTimer.start();
+        startTimer(mBusiness.getStartTime(),INTERVAL);
 
+        mCustomFreq = new CustomerFrequencyGenerator();
+        customers = mCustomFreq.gen(mDay,false);
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -162,6 +155,10 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         mTimer.cancel();
     }
 
+    public boolean onMenuOpened (int featureId, Menu menu){
+        return false;
+    }
+
     /**
      * Called when a panel's menu item has been selected by the user.
      * @param featureId The panel that the menu is in.
@@ -173,7 +170,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         switch (item.getItemId()){
             case R.id.action_mainmenu:
                 onBackPressed();
-                break;
+                return true;
             case R.id.action_save:
                 try {
                     saveGame();
@@ -187,7 +184,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                break;
+                return true;
             case R.id.action_howto:
                 // TODO : fill in
                 startTimer(timeResumed,INTERVAL);  // TODO: remove when case is filled in
@@ -198,9 +195,8 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
                 return super.onMenuItemSelected(featureId,item);
             default:
                 startTimer(timeResumed,INTERVAL);
-                return super.onMenuItemSelected(featureId,item);
+                return false;
         }
-        return true;
     }
 
 	@Override
@@ -378,6 +374,7 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
                 mBusiness.nextDay();
                 mDay = mBusiness.getDay();
                 startTimer(MAX_TIME, INTERVAL);
+                customers = mCustomFreq.gen(mDay, false);
             }
         });
 
@@ -440,11 +437,13 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
         // TODO: add customer array updates here
         public void onTick(long millisUntilFinished) {
             timeResumed = millisUntilFinished;
-            long seconds = SECONDS_IN_MINUTE - (millisUntilFinished / INTERVAL);
+            int seconds = (int)(SECONDS_IN_MINUTE - (millisUntilFinished / INTERVAL));
 
 
-            if(seconds % THIRTY_MINUTES == 0){
-                timerText.setText(getTime((int)seconds));
+            moneyText.setText(String.format("$%.2f",mBusiness.getProfit()));
+
+            if (seconds % THIRTY_MINUTES == 0){
+                timerText.setText(getTime(seconds));
            }
         }
 
