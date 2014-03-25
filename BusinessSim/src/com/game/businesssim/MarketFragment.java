@@ -54,10 +54,135 @@ public class MarketFragment extends Fragment {
         	public void onClick(View v){
         		// update the textView for this item
         		String amount = ((TextView)getView().findViewById(R.id.lemonAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) - 1;
+        		((TextView)getView().findViewById(R.id.lemonAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost, false for subtract
+        		updateTotalCost(0, prices, false);
+        	}
+        	
+        });
+        
+        pLemon_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.lemonAmt)).getText().toString();
         		int newAmount = Integer.parseInt(amount) + 1;
         		((TextView)getView().findViewById(R.id.lemonAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost, true for add
+        		updateTotalCost(0, prices, true);
+        	}
+        	
+        });
+        
+        mCup_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.cupsAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) - 1;
+        		((TextView)getView().findViewById(R.id.cupsAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost, false for subtract
+        		updateTotalCost(1, prices, false);
+        	}
+        	
+        });
+        
+        pCup_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.cupsAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) + 1;
+        		((TextView)getView().findViewById(R.id.cupsAmt)).setText(Integer.toString(newAmount));
         		// update the textView for the totalCost
-        		updateTotalCost(0, prices);
+        		updateTotalCost(1, prices, true);
+        	}
+        	
+        });
+        
+        mSugar_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.sugarAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) - 1;
+        		((TextView)getView().findViewById(R.id.sugarAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost
+        		updateTotalCost(2, prices, false);
+        	}
+        	
+        });
+        
+        pSugar_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.sugarAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) + 1;
+        		((TextView)getView().findViewById(R.id.sugarAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost
+        		updateTotalCost(2, prices, true);
+        	}
+        	
+        });
+        
+        mIce_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.iceAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) - 1;
+        		((TextView)getView().findViewById(R.id.iceAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost
+        		updateTotalCost(3, prices, false);
+        	}
+        	
+        });
+        
+        pIce_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.iceAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) + 1;
+        		((TextView)getView().findViewById(R.id.iceAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost
+        		updateTotalCost(3, prices, true);
+        	}
+        	
+        });
+        
+        mAds_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.adsAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) - 1;
+        		((TextView)getView().findViewById(R.id.adsAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost
+        		updateTotalCost(4, prices, false);
+        	}
+        	
+        });
+        
+        pAds_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// update the textView for this item
+        		String amount = ((TextView)getView().findViewById(R.id.adsAmt)).getText().toString();
+        		int newAmount = Integer.parseInt(amount) + 1;
+        		((TextView)getView().findViewById(R.id.adsAmt)).setText(Integer.toString(newAmount));
+        		// update the textView for the totalCost
+        		updateTotalCost(4, prices, true);
+        	}
+        	
+        });
+        
+        buy_button.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		// TODO: update the business object
         	}
         	
         });
@@ -65,9 +190,15 @@ public class MarketFragment extends Fragment {
         return rootView;
     }
     
-    private void updateTotalCost(int item, float[] prices){
-    	// TODO: if we want to set a strict value for increasing (not 1), multiply price * that value 
-    	Cost = Cost - prices[item];
+    /* This method updates the total cost of the on going purchase
+     * the boolean add determines if we are adding or subtracting
+     */
+    private void updateTotalCost(int item, float[] prices, boolean add){
+    	// TODO: if we want to set a strict value for increasing (not 1), multiply price * that value
+    	float p = prices[item];
+    	if(!add) p = p * -1;
+    	
+    	Cost = Cost + p;
     	
     	((TextView) getView().findViewById(R.id.totalCost)).setText(Float.toString(Cost));
     	
