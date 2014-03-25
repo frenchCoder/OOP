@@ -18,9 +18,9 @@ public class CustomerFrequencyGenerator {
 		double perc = (hasAd) ? adIncr : dailyIncr;
 		perc *= day;
 		
-		for (int i=0; i<10; i++){
+		for (int i=0; i<freq.length; i += 6){
 			//create number of customers for next hour segment
-			int hour = (int)(r.nextDouble() * ratios[i] + ratios[i]*(0.3+perc));
+			int hour = (int)(r.nextDouble() * ratios[i/6] + ratios[i/6]*(0.3+perc));
 			//fill in next hour of array randomly
 			for (int j = 0; j<6; j++){
 				freq[i+j] = r.nextInt(hour*2+1);	
