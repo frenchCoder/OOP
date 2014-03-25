@@ -1,5 +1,7 @@
 package com.game.businesssim;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,7 +14,7 @@ import android.widget.TextView;
 public class MarketFragment extends Fragment {
 	
 	private float Cost;
-	
+	Business businessInfo ;
  
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +31,9 @@ public class MarketFragment extends Fragment {
     		item 4 = ads
     	*/
     	final float[] prices = {1.00f, 1.00f, 1.00f, 1.00f, 1.00f}; //TODO: change the prices
+    	
+    	// Get the info from the business
+    	businessInfo = ((GameControllerActivity)this.getActivity()).getBusiness();
     	
         View rootView = inflater.inflate(R.layout.fragment_market, container, false);
          
@@ -55,9 +60,14 @@ public class MarketFragment extends Fragment {
         		// update the textView for this item
         		String amount = ((TextView)getView().findViewById(R.id.lemonAmt)).getText().toString();
         		int newAmount = Integer.parseInt(amount) - 1;
-        		((TextView)getView().findViewById(R.id.lemonAmt)).setText(Integer.toString(newAmount));
+        		if(newAmount < 0){ 
+        			newAmount =0;
+        		}
+        		else{
+        			updateTotalCost(0, prices, false);
+        		}
         		// update the textView for the totalCost, false for subtract
-        		updateTotalCost(0, prices, false);
+    			((TextView)getView().findViewById(R.id.lemonAmt)).setText(Integer.toString(newAmount));
         	}
         	
         });
@@ -81,9 +91,14 @@ public class MarketFragment extends Fragment {
         		// update the textView for this item
         		String amount = ((TextView)getView().findViewById(R.id.cupsAmt)).getText().toString();
         		int newAmount = Integer.parseInt(amount) - 1;
-        		((TextView)getView().findViewById(R.id.cupsAmt)).setText(Integer.toString(newAmount));
+        		if(newAmount < 0){
+        			newAmount =0;
+        		}
+        		else{
+        			updateTotalCost(1, prices, false);
+        		}
         		// update the textView for the totalCost, false for subtract
-        		updateTotalCost(1, prices, false);
+    			((TextView)getView().findViewById(R.id.cupsAmt)).setText(Integer.toString(newAmount));
         	}
         	
         });
@@ -107,9 +122,14 @@ public class MarketFragment extends Fragment {
         		// update the textView for this item
         		String amount = ((TextView)getView().findViewById(R.id.sugarAmt)).getText().toString();
         		int newAmount = Integer.parseInt(amount) - 1;
-        		((TextView)getView().findViewById(R.id.sugarAmt)).setText(Integer.toString(newAmount));
+        		if(newAmount < 0){
+        			newAmount =0;
+        		}
+        		else{
+        			updateTotalCost(2, prices, false);
+        		}
         		// update the textView for the totalCost
-        		updateTotalCost(2, prices, false);
+    			((TextView)getView().findViewById(R.id.sugarAmt)).setText(Integer.toString(newAmount));
         	}
         	
         });
@@ -133,9 +153,14 @@ public class MarketFragment extends Fragment {
         		// update the textView for this item
         		String amount = ((TextView)getView().findViewById(R.id.iceAmt)).getText().toString();
         		int newAmount = Integer.parseInt(amount) - 1;
-        		((TextView)getView().findViewById(R.id.iceAmt)).setText(Integer.toString(newAmount));
+        		if(newAmount < 0){
+        			newAmount =0;
+        		}
+        		else{
+        			updateTotalCost(3, prices, false);
+        		}
         		// update the textView for the totalCost
-        		updateTotalCost(3, prices, false);
+    			((TextView)getView().findViewById(R.id.iceAmt)).setText(Integer.toString(newAmount));
         	}
         	
         });
@@ -159,9 +184,14 @@ public class MarketFragment extends Fragment {
         		// update the textView for this item
         		String amount = ((TextView)getView().findViewById(R.id.adsAmt)).getText().toString();
         		int newAmount = Integer.parseInt(amount) - 1;
-        		((TextView)getView().findViewById(R.id.adsAmt)).setText(Integer.toString(newAmount));
+        		if(newAmount < 0){
+        			newAmount =0;
+        		}
+        		else{
+        			updateTotalCost(4, prices, false);
+        		}
         		// update the textView for the totalCost
-        		updateTotalCost(4, prices, false);
+    			((TextView)getView().findViewById(R.id.adsAmt)).setText(Integer.toString(newAmount));
         	}
         	
         });
@@ -182,7 +212,22 @@ public class MarketFragment extends Fragment {
         buy_button.setOnClickListener(new OnClickListener(){
         	@Override
         	public void onClick(View v){
-        		// TODO: update the business object
+        		
+        		float money = (float)businessInfo.getProfit();
+        		if(money < Cost){
+        			// Display a dialog
+        			purchaseDenied();
+        		}
+        		else{
+        			// we can make the purchase
+        			businessInfo.setProfit(money-Cost); // make the purchase
+        			// update all the items in the business
+        			updateBusinessItems(businessInfo);
+        			// update the total purchase back to zero
+        			((TextView)getView().findViewById(R.id.totalCost)).setText("0");
+	
+        		}
+        			
         	}
         	
         });
@@ -190,6 +235,38 @@ public class MarketFragment extends Fragment {
         return rootView;
     }
     
+    /* This method updates all the item fields of the business.
+     * It also, sets the values of the items back to zero
+     */
+    
+    private void updateBusinessItems(Business b){
+    	// Update lemons
+    	String amount = ((TextView)getView().findViewById(R.id.lemonAmt)).getText().toString();
+    	((TextView)getView().findViewById(R.id.lemonAmt)).setText("0");
+		b.setLemonCount(b.getLemonCount() + Integer.parseInt(amount));
+		
+		// Update cups
+		amount = ((TextView)getView().findViewById(R.id.cupsAmt)).getText().toString();
+    	((TextView)getView().findViewById(R.id.cupsAmt)).setText("0");
+		b.setCupCount(b.getCupCount() + Integer.parseInt(amount));
+		
+		// Update sugar
+		amount = ((TextView)getView().findViewById(R.id.sugarAmt)).getText().toString();
+    	((TextView)getView().findViewById(R.id.sugarAmt)).setText("0");
+		b.setSugarCount(b.getSugarCount() + Integer.parseInt(amount));
+		
+		// Update ice
+		amount = ((TextView)getView().findViewById(R.id.iceAmt)).getText().toString();
+    	((TextView)getView().findViewById(R.id.iceAmt)).setText("0");
+		b.setIceCount(b.getIceCount() + Integer.parseInt(amount));
+		
+		// Update advertisement 
+		amount = ((TextView)getView().findViewById(R.id.adsAmt)).getText().toString();
+    	((TextView)getView().findViewById(R.id.adsAmt)).setText("0");
+		b.setNumAds(b.getNumAds() + Integer.parseInt(amount));
+
+    }
+
     /* This method updates the total cost of the on going purchase
      * the boolean add determines if we are adding or subtracting
      */
@@ -204,4 +281,20 @@ public class MarketFragment extends Fragment {
     	
     }
  
+    private void purchaseDenied(){
+    	AlertDialog.Builder deniedPurchaseDialog = new AlertDialog.Builder(getActivity());	
+    	
+    	deniedPurchaseDialog.setMessage(R.string.cant_buy_text);
+    	deniedPurchaseDialog.setTitle(R.string.cant_buy_title);
+
+        // continue game if user presses 'cancel'
+    	deniedPurchaseDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+               
+            }
+        });
+
+    	deniedPurchaseDialog.create();
+    	deniedPurchaseDialog.show();
+    }
 }

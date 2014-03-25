@@ -75,7 +75,7 @@
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
 		                android:id="@+id/plusLemon"
@@ -134,7 +134,7 @@
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
 		                android:id="@+id/plusCups"
@@ -194,7 +194,7 @@
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
 		                android:id="@+id/plusSugar"
@@ -251,7 +251,7 @@
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
 		                android:id="@+id/plusIce"
