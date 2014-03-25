@@ -190,11 +190,15 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
                 break;
             case R.id.action_howto:
                 // TODO : fill in
-                startTimer(timeResumed,INTERVAL);  // TODO: remove when case is filled in
+            	Intent hIntent = new Intent(GameControllerActivity.this, HowToActivity.class);
+        		startActivity(hIntent);	
+                //startTimer(timeResumed,INTERVAL);  // TODO: remove when case is filled in
                 return super.onMenuItemSelected(featureId,item);
             case R.id.action_glossary:
                 // TODO : fill in
-                  startTimer(timeResumed,INTERVAL); // TODO: remove when case is filled in
+            	Intent gIntent = new Intent(GameControllerActivity.this, GlossaryActivity.class);
+        		startActivity(gIntent);	
+                //  startTimer(timeResumed,INTERVAL); // TODO: remove when case is filled in
                 return super.onMenuItemSelected(featureId,item);
             default:
                 startTimer(timeResumed,INTERVAL);
