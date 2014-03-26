@@ -1,6 +1,7 @@
 package com.game.businesssim;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,24 +12,38 @@ import android.widget.TextView;
 
 public class StandFragment extends Fragment {
 
-    @Override
+    private Handler customHandler = new Handler();
+    private TextView lemonCntText ;
+    private TextView cupCntText ;
+    private TextView sugarCntText ;
+    private TextView iceCntText;
+    private Business businessInfo;
+    private TextView lemonadeQtyText;
+
+    public void onViewCreated(View view, Bundle savedInstanceState){
+        super.onViewCreated(view,savedInstanceState);
+
+        // Thread handler to constantly update the lemonade quantity (and supplies)
+        customHandler.postDelayed(updateBusinessInfo, 0);
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.fragment_stand, container, false);
 
-        final Business businessInfo = ((GameControllerActivity)this.getActivity()).getBusiness();
-
         final Button plusButton = (Button) rootView.findViewById(R.id.plusBtn);
         final Button negButton = (Button) rootView.findViewById(R.id.minusBtn);
         final Button makeButton = (Button) rootView.findViewById(R.id.makeBtn);
 
-        final TextView lemonCntText = (TextView) rootView.findViewById(R.id.text_lemonCnt);
-        final TextView cupCntText = (TextView) rootView.findViewById(R.id.text_cupCnt);
-        final TextView sugarCntText = (TextView) rootView.findViewById(R.id.text_sugarCnt);
-        final TextView iceCntText = (TextView) rootView.findViewById(R.id.text_iceCnt);
+        businessInfo = ((GameControllerActivity)this.getActivity()).getBusiness();
 
-        final TextView lemonadeQtyText = (TextView) rootView.findViewById(R.id.text_lemonadeCnt);
+        lemonCntText = (TextView) rootView.findViewById(R.id.text_lemonCnt);
+        cupCntText = (TextView) rootView.findViewById(R.id.text_cupCnt);
+        sugarCntText = (TextView) rootView.findViewById(R.id.text_sugarCnt);
+        iceCntText = (TextView) rootView.findViewById(R.id.text_iceCnt);
+
+       lemonadeQtyText = (TextView) rootView.findViewById(R.id.text_lemonadeCnt);
 
         final TextView priceText = (TextView) rootView.findViewById(R.id.priceText);
 
@@ -78,5 +93,21 @@ public class StandFragment extends Fragment {
 
         return rootView;
     }
+
+    private Runnable updateBusinessInfo = new Runnable() {
+
+        public void run() {
+
+            lemonCntText.setText(String.format("%d", businessInfo.getLemonCount()));
+            cupCntText.setText(String.format("%d", businessInfo.getCupCount()));
+            iceCntText.setText(String.format("%d", businessInfo.getIceCount()));
+            sugarCntText.setText(String.format("%d", businessInfo.getSugarCount()));
+            String percent = "%";
+            lemonadeQtyText.setText(String.format("%d%s", businessInfo.getLemonQuantity(), percent));
+
+            customHandler.postDelayed(this, 0);
+        }
+
+    };
 
 }
