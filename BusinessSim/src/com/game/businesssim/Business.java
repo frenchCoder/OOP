@@ -176,7 +176,7 @@ public class Business implements Serializable {
         cupsPerPitcher += totalCups;
 
         // increase the lemonade quantity
-        lemonadeQty += (cupsPerPitcher * 100) / CUPS_PER_PITCHER;
+        lemonadeQty = (cupsPerPitcher * 100) / CUPS_PER_PITCHER;
 
         // decrement supplies used for this batch of lemonade
         iceCount -= iceNeeded;
