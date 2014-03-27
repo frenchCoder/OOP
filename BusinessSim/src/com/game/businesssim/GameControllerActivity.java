@@ -443,6 +443,9 @@ public class GameControllerActivity extends FragmentActivity implements ActionBa
             timeResumed = millisUntilFinished;
             int seconds = (int)(SECONDS_IN_MINUTE - (millisUntilFinished / INTERVAL));
 
+            if (seconds!=60){
+                mBusiness.sellLemonade(customers[seconds]);
+            }
 
             moneyText.setText(String.format("$%.2f",mBusiness.getProfit()));
 
