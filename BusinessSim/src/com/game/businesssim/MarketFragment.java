@@ -224,7 +224,8 @@ public class MarketFragment extends Fragment {
         			// update all the items in the business
         			updateBusinessItems(businessInfo);
         			// update the total purchase back to zero
-        			((TextView)getView().findViewById(R.id.totalCost)).setText("0");
+        			((TextView)getView().findViewById(R.id.totalCost)).setText("$0.00");
+        			Cost = 0;
 	
         		}
         			
@@ -276,8 +277,7 @@ public class MarketFragment extends Fragment {
     	if(!add) p = p * -1;
     	
     	Cost = Cost + p;
-    	
-    	((TextView) getView().findViewById(R.id.totalCost)).setText(Float.toString(Cost));
+    	((TextView) getView().findViewById(R.id.totalCost)).setText(String.format("$%.2f", Cost));
     	
     }
  
