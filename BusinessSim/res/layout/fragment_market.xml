@@ -75,7 +75,7 @@
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
 		                android:id="@+id/plusLemon"
@@ -109,7 +109,7 @@
 				        android:textStyle="bold"
 				        android:textSize="20sp"  />
 		             <TextView
-				        android:id="@+id/secondLine"
+				        android:id="@+id/secondLine2"
 				        android:layout_width="fill_parent"
 				        android:layout_height="26dip"
 				        android:ellipsize="marquee"
@@ -121,23 +121,23 @@
 	             
 	            <!-- amount of items chooser -->
 		            <Button
-			            android:id="@+id/minusLemon"
+			            android:id="@+id/minusCups"
 			            style="?android:attr/buttonStyleSmall"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:text="-" />
 		            
 		            <TextView
-		                android:id="@+id/lemonAmt"
+		                android:id="@+id/cupsAmt"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
-		                android:id="@+id/plusLemon"
+		                android:id="@+id/plusCups"
 		                style="?android:attr/buttonStyleSmall"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
 				    android:orientation="vertical"
 				    android:gravity="center_vertical" >
 		             <TextView
-				        android:id="@+id/lemontitle"
+				        android:id="@+id/sugartitle"
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:gravity="center_vertical"
@@ -169,7 +169,7 @@
 				        android:textStyle="bold"
 				        android:textSize="20sp"  />
 		             <TextView
-				        android:id="@+id/secondLine"
+				        android:id="@+id/secondLine3"
 				        android:layout_width="fill_parent"
 				        android:layout_height="26dip"
 				        android:ellipsize="marquee"
@@ -181,23 +181,23 @@
 	             
 	            <!-- amount of items chooser -->
 		            <Button
-			            android:id="@+id/minusLemon"
+			            android:id="@+id/minusSugar"
 			            style="?android:attr/buttonStyleSmall"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:text="-" />
 		            
 		            <TextView
-		                android:id="@+id/lemonAmt"
+		                android:id="@+id/sugarAmt"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
-		                android:id="@+id/plusLemon"
+		                android:id="@+id/plusSugar"
 		                style="?android:attr/buttonStyleSmall"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
@@ -238,23 +238,23 @@
 	             
 	            <!-- amount of items chooser -->
 		            <Button
-			            android:id="@+id/minusLemon"
+			            android:id="@+id/minusIce"
 			            style="?android:attr/buttonStyleSmall"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:text="-" />
 		            
 		            <TextView
-		                android:id="@+id/lemonAmt"
+		                android:id="@+id/iceAmt"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
-		                android:id="@+id/plusLemon"
+		                android:id="@+id/plusIce"
 		                style="?android:attr/buttonStyleSmall"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
@@ -295,23 +295,23 @@
 	             
 	            <!-- amount of items chooser -->
 		            <Button
-			            android:id="@+id/minusLemon"
+			            android:id="@+id/minusAds"
 			            style="?android:attr/buttonStyleSmall"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:text="-" />
 		            
 		            <TextView
-		                android:id="@+id/lemonAmt"
+		                android:id="@+id/adsAmt"
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
 			            android:layout_marginRight="5dp"
 			            android:layout_marginLeft="5dp"
 			            android:textSize="25sp"
-			            android:text="10" />
+			            android:text="0" />
 		            
 		            <Button
-		                android:id="@+id/plusLemon"
+		                android:id="@+id/plusAds"
 		                style="?android:attr/buttonStyleSmall"
 		                android:layout_width="wrap_content"
 		                android:layout_height="wrap_content"
@@ -329,10 +329,11 @@
 	        android:orientation="horizontal" >
 	
 	        <TextView
+	            android:id="@+id/totalCost"
+	            android:text="$0.00"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="90dp"
-	            android:text="$100.00"
 	            android:textSize="30sp"
 	            android:textStyle="bold" />
 	
@@ -341,7 +342,6 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_margin="10dp"
-	            android:background="@color/Orange"
 	            android:text="@string/buy"
 	            android:textSize="30sp"
 	            android:textStyle="bold" />
