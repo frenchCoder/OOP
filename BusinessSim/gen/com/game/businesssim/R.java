@@ -174,8 +174,9 @@ public final class R {
         public static final int ic_drawer=0x7f020001;
         public static final int ic_launcher=0x7f020002;
         public static final int lemonade_splash1=0x7f020003;
-        public static final int stand=0x7f020004;
-        public static final int textlines=0x7f020005;
+        public static final int orange_button=0x7f020004;
+        public static final int stand=0x7f020005;
+        public static final int textlines=0x7f020006;
     }
     public static final class id {
         public static final int action_glossary=0x7f0b0040;
@@ -338,5 +339,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
+        public static final int button_text=0x7f090002;
+        public static final int reg_text=0x7f090003;
     }
 }
