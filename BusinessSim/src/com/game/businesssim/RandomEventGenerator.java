@@ -1,21 +1,25 @@
 package com.game.businesssim;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import android.app.Application;
+import android.content.Context;
 
-public class RandomEventGenerator {
+public class RandomEventGenerator extends Application{
 
 	private ArrayList<RandomEvent> events = new ArrayList<RandomEvent>();
 
 	//initialzes the events array
-	public RandomEventGenerator() {
+	public RandomEventGenerator(Context context) {
 		BufferedReader br = null;
 		try {
 			String sCurrentLine;
 			String[] eventStrings;
-			br = new BufferedReader(new FileReader("assets/events.txt"));
+			br = new BufferedReader(new InputStreamReader(context.getAssets().open("events.txt")));
 			while ((sCurrentLine = br.readLine()) != null) {
 				eventStrings = sCurrentLine.trim().split("\\s*,\\s*");
 				this.events.add(new RandomEvent(eventStrings[0],
@@ -28,8 +32,8 @@ public class RandomEventGenerator {
 								.parseDouble(eventStrings[8]), Integer
 								.parseInt(eventStrings[9]), Integer
 								.parseInt(eventStrings[10]), Integer
-								.parseInt(eventStrings[12]), Double
-								.parseDouble(eventStrings[13])));
+								.parseInt(eventStrings[11]), Double
+								.parseDouble(eventStrings[12])));
 			}
 
 		} catch (IOException e) {

@@ -178,7 +178,6 @@ public final class R {
         public static final int textlines=0x7f020005;
     }
     public static final class id {
-
         public static final int action_glossary=0x7f0b0040;
         public static final int action_howto=0x7f0b0041;
         public static final int action_mainmenu=0x7f0b003e;
@@ -189,8 +188,8 @@ public final class R {
         public static final int chooseGameBtn=0x7f0b0004;
         public static final int cupsAmt=0x7f0b001e;
         public static final int cuptitle=0x7f0b001b;
-        public static final int details=0x7f0b000c;
-        public static final int getLoanBtn=0x7f0b000b;
+        public static final int details=0x7f0b000d;
+        public static final int getLoanBtn=0x7f0b000c;
         public static final int glossary=0x7f0b003b;
         public static final int glossaryBtn=0x7f0b0006;
         public static final int highscoreBtn=0x7f0b0007;
@@ -218,9 +217,10 @@ public final class R {
         public static final int plusLemon=0x7f0b0019;
         public static final int plusSugar=0x7f0b0025;
         public static final int priceText=0x7f0b0039;
-        public static final int radioButton1=0x7f0b0008;
-        public static final int radioButton2=0x7f0b0009;
-        public static final int radioButton3=0x7f0b000a;
+        public static final int radioButton1=0x7f0b0009;
+        public static final int radioButton2=0x7f0b000a;
+        public static final int radioButton3=0x7f0b000b;
+        public static final int radioGroup=0x7f0b0008;
         public static final int score=0x7f0b003d;
         public static final int secondLine=0x7f0b0016;
         public static final int secondLine2=0x7f0b001c;
@@ -241,11 +241,9 @@ public final class R {
         public static final int text_iceCnt=0x7f0b0034;
         public static final int text_lemonCnt=0x7f0b0032;
         public static final int text_lemonadeCnt=0x7f0b003a;
-        public static final int text_owed=0x7f0b000d;
-        public static final int text_owedWithInterest=0x7f0b000e;
+        public static final int text_owed=0x7f0b000e;
         public static final int text_sugarCnt=0x7f0b0035;
         public static final int totalCost=0x7f0b0030;
-
     }
     public static final class layout {
         public static final int activity_game=0x7f030000;
@@ -272,20 +270,16 @@ public final class R {
          */
         public static final int buy=0x7f070021;
         public static final int cancel=0x7f070017;
-
         public static final int cant_buy_text=0x7f070023;
         public static final int cant_buy_title=0x7f070022;
-
         public static final int closed=0x7f070018;
         public static final int cups=0x7f07001f;
         public static final int day_summary=0x7f070012;
         /**   MainMenu strings 
          */
         public static final int dialog_title=0x7f07001a;
-
         public static final int drawer_close=0x7f070025;
         public static final int drawer_open=0x7f070024;
-
         public static final int game_loaded=0x7f07000d;
         public static final int game_not_saved=0x7f070016;
         public static final int game_over=0x7f070019;
