@@ -5,27 +5,27 @@
         
 	     <RelativeLayout 
 		   android:layout_width="match_parent"
-		   android:layout_height="match_parent"
+		   android:layout_height="wrap_content"
 		   android:orientation="vertical" 
-		   android:background="@color/LightBlue">
+		   android:background="@color/LightSkyBlue">
 	
 	     <TextView
-	      android:id="@+id/marketTitle"
-	      android:layout_width="wrap_content"
-	      android:layout_height="wrap_content"
-	      android:layout_centerHorizontal="true"
-	      android:layout_alignParentTop="true"
-	      android:background="@color/LightGreen"
-	      android:text="MarketPlace"
-	      android:textStyle="bold"
-	      android:textSize="20sp" />
+		      android:id="@+id/marketTitle"
+		      android:layout_width="match_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_centerHorizontal="true"
+		      android:layout_alignParentTop="true"
+		      android:gravity="center"
+		      android:background="@drawable/textlines"
+		      android:text="MarketPlace"
+		      android:textStyle="bold"
+		      android:textSize="30sp" />
     
 	    <TableLayout
 	        android:id="@+id/supplyTable"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@id/marketTitle"
-	        android:background="@color/LightBlue" >
+	        android:layout_below="@id/marketTitle" >
 	
 	        <!-- Lemon Row -->
 	        <TableRow
@@ -63,10 +63,11 @@
 	            <!-- amount of items chooser -->
 		            <Button
 			            android:id="@+id/minusLemon"
-			            style="?android:attr/buttonStyleSmall"
-			            android:layout_width="wrap_content"
+			            android:layout_width="50dp"
 			            android:layout_height="wrap_content"
-			            android:text="-" />
+			            android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+			            android:text="@string/minus" />
 		            
 		            <TextView
 		                android:id="@+id/lemonAmt"
@@ -79,10 +80,11 @@
 		            
 		            <Button
 		                android:id="@+id/plusLemon"
-		                style="?android:attr/buttonStyleSmall"
-		                android:layout_width="wrap_content"
+		                android:layout_width="50dp"
 		                android:layout_height="wrap_content"
-		                android:text="+" />
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+		                android:text="@string/plus" />
 	
 	        </TableRow>
 	
@@ -122,10 +124,11 @@
 	            <!-- amount of items chooser -->
 		            <Button
 			            android:id="@+id/minusCups"
-			            style="?android:attr/buttonStyleSmall"
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text="-" />
+			            android:layout_width="50dp"
+		                android:layout_height="wrap_content"
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+			            android:text="@string/minus" />
 		            
 		            <TextView
 		                android:id="@+id/cupsAmt"
@@ -138,10 +141,11 @@
 		            
 		            <Button
 		                android:id="@+id/plusCups"
-		                style="?android:attr/buttonStyleSmall"
-		                android:layout_width="wrap_content"
+		                android:layout_width="50dp"
 		                android:layout_height="wrap_content"
-		                android:text="+" />
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+		                android:text="@string/plus" />
 	            
 	        </TableRow>
 	
@@ -182,10 +186,11 @@
 	            <!-- amount of items chooser -->
 		            <Button
 			            android:id="@+id/minusSugar"
-			            style="?android:attr/buttonStyleSmall"
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text="-" />
+			            android:layout_width="50dp"
+		                android:layout_height="wrap_content"
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+			            android:text="@string/minus" />
 		            
 		            <TextView
 		                android:id="@+id/sugarAmt"
@@ -198,10 +203,11 @@
 		            
 		            <Button
 		                android:id="@+id/plusSugar"
-		                style="?android:attr/buttonStyleSmall"
-		                android:layout_width="wrap_content"
+		                android:layout_width="50dp"
 		                android:layout_height="wrap_content"
-		                android:text="+" />
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+		                android:text="@string/plus" />
 	        </TableRow>
 	
 	        <!-- Ice Row -->
@@ -239,10 +245,11 @@
 	            <!-- amount of items chooser -->
 		            <Button
 			            android:id="@+id/minusIce"
-			            style="?android:attr/buttonStyleSmall"
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text="-" />
+			           android:layout_width="50dp"
+		                android:layout_height="wrap_content"
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+			            android:text="@string/minus" />
 		            
 		            <TextView
 		                android:id="@+id/iceAmt"
@@ -255,10 +262,11 @@
 		            
 		            <Button
 		                android:id="@+id/plusIce"
-		                style="?android:attr/buttonStyleSmall"
-		                android:layout_width="wrap_content"
+		                android:layout_width="50dp"
 		                android:layout_height="wrap_content"
-		                android:text="+" />
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+		                android:text="@string/plus" />
 	        </TableRow>
 	        
 	        <!-- Advertising Row -->
@@ -296,10 +304,11 @@
 	            <!-- amount of items chooser -->
 		            <Button
 			            android:id="@+id/minusAds"
-			            style="?android:attr/buttonStyleSmall"
-			            android:layout_width="wrap_content"
-			            android:layout_height="wrap_content"
-			            android:text="-" />
+			            android:layout_width="50dp"
+		                android:layout_height="wrap_content"
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
+			            android:text="@string/minus" />
 		            
 		            <TextView
 		                android:id="@+id/adsAmt"
@@ -312,9 +321,10 @@
 		            
 		            <Button
 		                android:id="@+id/plusAds"
-		                style="?android:attr/buttonStyleSmall"
-		                android:layout_width="wrap_content"
+		                android:layout_width="50dp"
 		                android:layout_height="wrap_content"
+		                android:background="@drawable/orange_button"
+	            		style="@style/button_text"
 		                android:text="@string/plus" />
 	        </TableRow>
 	    </TableLayout>
@@ -324,13 +334,13 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_below="@id/supplyTable"
-	        android:background="@color/LightGreen"
+	        android:background="@color/GrassGreen"
 	        android:gravity="center"
 	        android:orientation="horizontal" >
 	
 	        <TextView
 	            android:id="@+id/totalCost"
-	            android:text="$0.00"
+	            android:text="@string/emptycost"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="90dp"
@@ -343,8 +353,10 @@
 	            android:layout_height="wrap_content"
 	            android:layout_margin="10dp"
 	            android:text="@string/buy"
-	            android:background="@drawable/orange_button"
-	            style="@style/button_text" />
+	            android:textStyle="bold"
+	            android:textSize="25sp"
+	            android:background="@drawable/yellow_button"
+	             />
 	    </LinearLayout>
 
     </RelativeLayout>

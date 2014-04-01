@@ -7,47 +7,70 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
+    android:background="@drawable/lemonade_splash2"
     tools:context=".MainActivity" >
     
-    <!--  The image is not available, remove it temporarily
-        android:background="@drawable/lemonade_splash1" -->
 
     
-    <Button
-        android:id="@+id/chooseGameBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin = "5dp"
-        android:text="Play Game" />
+    
 
-    <Button
-        android:id="@+id/howtoBtn"
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chooseGameBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_margin = "5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:columnCount="2"
+	    android:rowCount="2" >
+	    
+        <Button
+	        android:id="@+id/chooseGameBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:layout_margin = "10dp"
+	        android:layout_column="0"
+     		android:layout_row="0"
+	        android:background="@drawable/orange_button"
+		    style="@style/button_text"
+	        android:text="Play Game" />
+	
+	    <Button
+	        android:id="@+id/howtoBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerHorizontal="true"
+	        android:layout_margin = "10dp"
+	        android:layout_column="1"
+     		android:layout_row="0"
+	        android:background="@drawable/orange_button"
+		    style="@style/button_text"
+	        android:text="How To Play" />
+
+	    <Button
+	        android:id="@+id/glossaryBtn"
+	        style="@style/button_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_column="0"
+	        android:layout_centerHorizontal="true"
+	        android:layout_margin="10dp"
+	        android:layout_row="1"
+	        android:background="@drawable/orange_button"
+	        android:text="Glossary" />
+
+	    <Button
+	        android:id="@+id/highscoreBtn"
+	        style="@style/button_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_column="1"
+	        android:layout_centerHorizontal="true"
+	        android:layout_margin="10dp"
+	        android:layout_row="1"
+	        android:background="@drawable/orange_button"
+	        android:text="High Scores" />
         
-        android:text="How To Play" />
-
-    <Button
-        android:id="@+id/glossaryBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/howtoBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_margin = "5dp"
-        android:text="Glossary" />
-
-    <Button
-        android:id="@+id/highscoreBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/glossaryBtn"
-        android:layout_margin = "5dp"
-        android:text="High Scores" />
+    </GridLayout>
 
 </RelativeLayout>

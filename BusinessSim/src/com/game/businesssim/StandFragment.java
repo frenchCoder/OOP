@@ -15,7 +15,7 @@ public class StandFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
-        View rootView = inflater.inflate(R.layout.fragment_stand, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_stand_old, container, false);
 
         final Business businessInfo = ((GameControllerActivity)this.getActivity()).getBusiness();
 

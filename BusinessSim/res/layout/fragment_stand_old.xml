@@ -40,42 +40,37 @@
 	</LinearLayout>
 
     <GridLayout
-        android:layout_width="226dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         android:columnCount="2"
         android:gravity="center_horizontal"
-        android:rowCount="2" >
-	
+        android:rowCount="2" >	
 		<!-- lemon count text -->
 	    <LinearLayout
 	        android:layout_width="100dip"
 	        android:layout_height="wrap_content" 
 	        android:orientation="horizontal"
-	        android:layout_gravity="center"
 	        android:layout_margin="5dp"
 	        android:layout_column="0"
      		android:layout_row="0">
-
-		        <ImageView
-		            android:id="@+id/lemon_image"
-		            android:layout_width="60dp"
-		            android:layout_height="60dp"
-		            android:src="@drawable/lemon" />
 			        
-		        
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/lemons" />
 		        <Space
 		            android:layout_width="wrap_content"
 		            android:layout_height="match_parent"
 		            android:layout_weight="1" />
-
 		        <TextView
 		            android:id="@+id/text_lemonCnt"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:layout_marginTop="10dp"
-		            android:textSize="25sp" />
-
+		            android:textSize="25sp"
+		             />
 		        <Space
 		            android:layout_width="wrap_content"
 		            android:layout_height="match_parent"
@@ -91,11 +86,12 @@
 		        android:layout_column="1"
 	     		android:layout_row="0">
 			        
-		        <ImageView
-		            android:id="@+id/cup_image"
-		            android:layout_width="60dp"
-		            android:layout_height="60dp"
-		            android:src="@drawable/cup" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/cups" />
 		        <Space
 		            android:layout_width="wrap_content"
 		            android:layout_height="match_parent"
@@ -104,7 +100,6 @@
 		            android:id="@+id/text_cupCnt"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:layout_marginTop="10dp"
 		            android:textSize="25sp"
 		             />
 		        <Space
@@ -122,11 +117,12 @@
 		        android:layout_column="0"
      			android:layout_row="1">
 		        
-		        <ImageView
-		            android:id="@+id/ice_image"
-		            android:layout_width="60dp"
-		            android:layout_height="60dp"
-		            android:src="@drawable/ice" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/ice" />
 		        <Space
 		            android:layout_width="wrap_content"
 		            android:layout_height="match_parent"
@@ -135,7 +131,6 @@
 		            android:id="@+id/text_iceCnt"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:layout_marginTop="10dp"
 		            android:textSize="25sp"
 		             />
 		        <Space
@@ -153,11 +148,12 @@
 		        android:layout_column="1"
 	     		android:layout_row="1">
 		        
-		       	<ImageView
-		            android:id="@+id/sugar_image"
-		            android:layout_width="60dp"
-		            android:layout_height="60dp"
-		            android:src="@drawable/sugar" />
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginRight="5dp"
+		            android:textSize="25sp"
+		            android:text="@string/sugar" />
 		        <Space
 		            android:layout_width="wrap_content"
 		            android:layout_height="match_parent"
@@ -166,14 +162,14 @@
 		            android:id="@+id/text_sugarCnt"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:layout_marginTop="10dp"
 		            android:textSize="25sp"
 		             />
 		        <Space
 		            android:layout_width="wrap_content"
 		            android:layout_height="match_parent"
 		            android:layout_weight="1" />
-		    </LinearLayout>		
+		    </LinearLayout>
+		    	
 		    
 	</GridLayout>
 	
@@ -182,7 +178,7 @@
 	 <RelativeLayout
 	         android:layout_width="200dp"
 	         android:layout_height="wrap_content"
-	         android:layout_marginTop="10dp"
+	         android:layout_marginTop="50dp"
 	         android:orientation="vertical" >
 			 
 			<Button android:id="@+id/plusBtn" 
